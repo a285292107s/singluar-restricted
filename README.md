@@ -1,0 +1,1 @@
+* 【document】[https://singluar.hunzsig.org](https://singluar.hunzsig.org)

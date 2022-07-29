@@ -1,0 +1,12 @@
+﻿.idea
+*.BridgeLabelsAndRatings
+projects/*
+assets/*
+assetsNew/*
+temp/*
+SCACHE
+conf
+vendor/WE/backups
+vendor/WE/logs
+vendor/WE/plugin/warcraft3/dzclient_api.ini
+vendor/w3x2lni/log
