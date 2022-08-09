@@ -25,6 +25,7 @@ function enchant.append(targetUnit, sourceUnit, enchantTypes)
             -- 如果没有设计反应，记录到未反应区
             enchantRemain.set(et, 1)
         else
+            local reacted = false
             enchant.types.forEach(function(ek, _)
                 -- 判断所有种类的附魔，如果之前有附魔过则反应
                 if (type(react[ek]) == "function") then
@@ -32,7 +33,7 @@ function enchant.append(targetUnit, sourceUnit, enchantTypes)
                     if (lv > 0) then
                         -- 如果有反应式，先消除旧附魔元素
                         local buffs = BuffCatcher(targetUnit, {
-                            name = "<APPEND>e_" .. ek,
+                            name = "prop_<APPEND>e_" .. ek,
                             filter = function(enumBuff)
                                 return enumBuff.duration() > 0
                             end,
@@ -51,12 +52,14 @@ function enchant.append(targetUnit, sourceUnit, enchantTypes)
                             level = lv,
                         })
                         enchantRemain.set(ek, 0)
-                        return
+                        reacted = true
                     end
                 end
-                -- 如果没有触发反应，记录到未反应区
-                enchantRemain.set(et, 1)
             end)
+            -- 如果没有触发反应，记录到未反应区
+            if (reacted == false) then
+                enchantRemain.set(et, 1)
+            end
         end
     end
     enchantRemain.forEach(function(ek, value)

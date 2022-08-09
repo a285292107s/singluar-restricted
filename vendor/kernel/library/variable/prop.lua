@@ -59,7 +59,7 @@ UNIT_MOVE_TYPE = {
     foot = { value = "foot", label = "步行" },
     fly = { value = "fly", label = "飞行" },
     float = { value = "float", label = "漂浮" },
-    amphibious = { value = "water", label = "两栖" },
+    amphibious = { value = "amphibious", label = "两栖" },
 }
 
 UNIT_PRIMARY = {

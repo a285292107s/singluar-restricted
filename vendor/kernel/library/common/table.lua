@@ -233,6 +233,9 @@ function table.equal(arr1, arr2)
         if (#arr1 ~= #arr2) then
             return false
         end
+        if (#arr1 == 0) then
+            return arr1 == arr2
+        end
         local res = true
         if (arr1.__NAME__ ~= nil or arr2.__NAME__ ~= nil) then
             res = arr1.__ID__ == arr2.__ID__
