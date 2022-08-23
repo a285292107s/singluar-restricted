@@ -271,3 +271,31 @@ function string.address(param)
     end
     return a
 end
+
+--- 填充
+---@param str string 原字串
+---@param length number 最终长度
+---@param pack string 填充字符
+---@param isLeft boolean 是否左侧填充
+---@return string
+function string.fill(str, length, pack, isLeft)
+    if (string.len(pack) < 1 or string.len(str) >= length) then
+        return str
+    end
+    if ((length - string.len(str)) % string.len(pack) ~= 0) then
+        return str
+    end
+    local left = true
+    if (type(isLeft) == "boolean") then
+        left = isLeft
+    end
+    local new = str or ""
+    while (string.len(new) < length) do
+        if (left == true) then
+            new = pack .. new
+        else
+            new = new .. pack
+        end
+    end
+    return new
+end

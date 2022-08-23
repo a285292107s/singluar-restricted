@@ -305,3 +305,29 @@ function table.wheel(arr, offset)
     end
     return new
 end
+
+--- 数组切片
+---@param arr any[]
+---@param i number 起始索引
+---@param j number 终止索引，当j小于i时将反向切片
+---@return any[]
+function table.slice(arr, i, j)
+    if (type(arr) ~= "table" or type(i) ~= "number" or type(j) ~= "number") then
+        return {}
+    end
+    local l = #arr
+    if (l == 0) then
+        return {}
+    end
+    local slice = {}
+    if (i < j) then
+        for k = i, j, 1 do
+            slice[#slice + 1] = arr[k]
+        end
+    elseif (i > j) then
+        for k = i, j, -1 do
+            slice[#slice + 1] = arr[k]
+        end
+    end
+    return slice
+end

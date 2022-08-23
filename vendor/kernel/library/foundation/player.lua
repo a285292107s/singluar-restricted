@@ -272,7 +272,7 @@ player.evtAttacked = J.Condition(function()
         local slk = slk.i2v(attacker.modelId()).slk
         local dmgpt = math.trunc(slk.dmgpt1, 3)
         local attackSpeed = math.min(math.max(attacker.attackSpeed(), -80), 400)
-        local delay = 0.25 + dmgpt / (1 + attackSpeed * 0.01)
+        local delay = 0.25 + 0.9 * dmgpt / (1 + attackSpeed * 0.01)
         attacker.prop("attackedTimer", time.setTimeout(delay, function(curTimer)
             curTimer.destroy()
             attacker.prop("attackedTimer", NIL)

@@ -77,6 +77,28 @@ INITIALIZATION = function()
     y = J.GetCameraBoundMinY() + h / 2
     RectCamera = Rect("camera", "square", x, y, w, h)
 
+    --- Z
+    local xMax = RectWorld.xMax()
+    local yMax = RectWorld.xMax()
+    x = RectWorld.xMin()
+    local loc = J.Location(0, 0)
+    J.handleRef(loc)
+    while (x < xMax) do
+        y = RectWorld.yMin()
+        while (y < yMax) do
+            J.MoveLocation(loc, x, y)
+            local z = J.GetLocationZ(loc)
+            local xi = math.floor(x / SL_CACHE["ZI"])
+            local yi = math.floor(y / SL_CACHE["ZI"])
+            SL_CACHE["Z"][xi .. "|" .. yi] = math.ceil(z)
+            z = nil
+            y = y + SL_CACHE["ZI"]
+        end
+        x = x + SL_CACHE["ZI"]
+    end
+    J.RemoveLocation(loc)
+    J.handleUnRef(loc)
+
     --- 游戏UI
     ---@type Frame
     FrameGameUI = Frame("UI_GAME", japi.DzGetGameUI(), nil)
