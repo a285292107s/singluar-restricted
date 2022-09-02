@@ -90,7 +90,13 @@ INITIALIZATION = function()
             local z = J.GetLocationZ(loc)
             local xi = math.floor(x / SL_CACHE["ZI"])
             local yi = math.floor(y / SL_CACHE["ZI"])
-            SL_CACHE["Z"][xi .. "|" .. yi] = math.ceil(z)
+            local zi = math.ceil(z)
+            if (zi ~= 0) then
+                if (SL_CACHE["Z"][xi] == nil) then
+                    SL_CACHE["Z"][xi] = {}
+                end
+                SL_CACHE["Z"][xi][yi] = zi
+            end
             z = nil
             y = y + SL_CACHE["ZI"]
         end
