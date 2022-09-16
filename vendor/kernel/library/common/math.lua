@@ -257,6 +257,15 @@ function math.expNeeds(max, fixed, ratio, limit)
     return needs
 end
 
+--- 高度斜率的角度
+---@param z1 number
+---@param z2 number
+---@param distance number
+---@return number
+function math.slopeAngle(z1, z2, distance)
+    return math._r2d * math.atan(z2 - z1, distance)
+end
+
 --- 目标转换坐标值
 ---@param target Unit|Item|{number,number} 目标
 ---@return number,number
