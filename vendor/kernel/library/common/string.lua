@@ -272,6 +272,19 @@ function string.address(param)
     return a
 end
 
+--- 重复字串
+---@param str string
+---@param times number integer
+---@return string
+function string.repeater(str, times)
+    times = math.floor(times or 1)
+    local r = ''
+    for _ = 1, times do
+        r = r .. str
+    end
+    return r
+end
+
 --- 填充
 ---@param str string 原字串
 ---@param length number 最终长度

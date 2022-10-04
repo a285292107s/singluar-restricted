@@ -98,12 +98,12 @@ end
 
 --- 重复table
 ---@param params any
----@param qty number integer
+---@param times number integer
 ---@return table
-function table.repeater(params, qty)
-    qty = math.floor(qty or 1)
+function table.repeater(params, times)
+    times = math.floor(times or 1)
     local r = {}
-    for _ = 1, qty do
+    for _ = 1, times do
         table.insert(r, params)
     end
     return r
