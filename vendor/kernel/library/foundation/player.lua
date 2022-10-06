@@ -122,7 +122,7 @@ player.evtDamagedArrived = function(sourceUnit, targetUnit)
         v.play()
     end
     local dmg = sourceUnit.attack() + math.rand(0, sourceUnit.attackRipple())
-    if (dmg >= 1) then
+    if (dmg >= 0.1) then
         ability.damage({
             sourceUnit = sourceUnit,
             targetUnit = targetUnit,

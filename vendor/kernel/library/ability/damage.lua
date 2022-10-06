@@ -37,7 +37,7 @@ function ability.damage(options)
         return options.damage > 0
     end)
     --- 最终伤害
-    if (options.damage > 1) then
+    if (options.damage >= 0.1) then
         if (options.sourceUnit ~= nil) then
             options.targetUnit.lastHurtSource(options.sourceUnit)
             options.sourceUnit.lastDamageTarget(options.targetUnit)
