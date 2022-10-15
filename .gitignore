@@ -1,9 +1,10 @@
 ﻿.idea
+.fleet
 *.BridgeLabelsAndRatings
-projects/*
-assets/*
-assetsNew/*
-temp/*
+projects
+assets
+assetsNew
+temp
 SCACHE
 conf
 vendor/WE/backups
