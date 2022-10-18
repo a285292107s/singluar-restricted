@@ -72,9 +72,6 @@ function href(this, handle)
                     J.DestroyQuest(this.__HANDLE__)
                 elseif (this.__NAME__ == "Rect") then
                     J.RemoveRect(this.__HANDLE__)
-                elseif (this.__NAME__ == "Image") then
-                    J.ShowImage(this.__HANDLE__, false)
-                    J.DestroyImage(this.__HANDLE__)
                 end
                 J.handleUnRef(this.__HANDLE__)
                 bop.h2o[this.__HANDLE__] = nil
