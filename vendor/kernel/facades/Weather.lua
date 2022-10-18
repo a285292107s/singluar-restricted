@@ -1,7 +1,7 @@
 ---@class Weather:Object
 ---@param bindRect Rect
 ---@param weatherType string
----@return Rect|nil
+---@return Weather|nil
 function Weather(bindRect, weatherType)
     if (not isObject(bindRect, "Rect") or weatherType == nil) then
         return error("params")

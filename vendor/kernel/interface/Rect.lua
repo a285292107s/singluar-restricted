@@ -64,8 +64,8 @@ function _.width(modify) end
 ---@return self|number
 function _.height(modify) end
 
---- 设置天气
----@param weatherType number
----@param duration number
----@return Weather
-function _.weather(weatherType, duration) end
+--- 添加或删除天气
+---@param weatherType WEATHER_TYPE 当设为nil且status为false时，去除所有天气，否则只去除1对应数量级
+---@param status boolean true添加|false删除
+---@return Weather|self
+function _.weather(weatherType, status) end
