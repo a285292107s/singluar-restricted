@@ -54,14 +54,14 @@ _assets_model = function(path, alias, class, options)
         if (class == "unit") then
             options = options or {}
             if (options.Art ~= nil) then
-                _assets_icon(options.Art, alias)
+                _assets_icon(options.Art)
             end
             _unit({})
             SINGLUAR_MODEL_U[alias] = path
         elseif (class == "item") then
             options = options or {}
             if (options.Art ~= nil) then
-                _assets_icon(options.Art, alias)
+                _assets_icon(options.Art)
             end
             _unit({})
             SINGLUAR_MODEL_I[alias] = path
