@@ -36,6 +36,14 @@ function _.parent(modify) end
 ---@return Frame[]
 function _.children() end
 
+--- 上级关系节点
+---@return Frame
+function _.upperNode() end
+
+--- 所有下级关系节点
+---@return Frame[]
+function _.lowerNodes() end
+
 --- 宽高尺寸(0-0.8,0-0.6)
 --- 百分比占比设置
 ---@param w number
