@@ -148,7 +148,7 @@ colour.format = function(str, containColor, options)
                 elseif (type(containColor) == "function") then
                     table.insert(builder, containColor(string.sub(str, cursor, p[1] - 1)))
                 else
-                    table.insert(builder, string.sub(str, cursor, p[1] - 1), containColor)
+                    table.insert(builder, string.sub(str, cursor, p[1] - 1))
                 end
             end
             if (options ~= nil and options[idx] ~= nil) then

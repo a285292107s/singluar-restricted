@@ -7,6 +7,11 @@ async.index = async.index or 0
 ---@private
 async.randPool = async.randPool or { i = {}, d = {} }
 
+--- 限制必须异步
+function async.must()
+    must(async.index > 0, "asyncCheck")
+end
+
 --- 异步调用，使用此方法后回调强制异步
 ---@param asyncPlayer Player
 ---@param callFunc function

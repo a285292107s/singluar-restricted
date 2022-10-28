@@ -6,6 +6,11 @@ sync._callback = sync._callback or {}
 sync._timer = sync._timer or {}
 sync._queue = sync._queue or {}
 
+--- 限制必须同步
+function sync.must()
+    must(async.index == 0, "syncCheck")
+end
+
 ---@private
 function sync.data(key, data)
     data = data or {}
