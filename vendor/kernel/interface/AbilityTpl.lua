@@ -123,8 +123,9 @@ function _.castWidthAdv(base, vary) end
 ---@return self
 function _.castHeightAdv(base, vary) end
 
---- 技能描述体
----@param modify string[]|nil
+--- 描述体
+---@alias noteTplDescriptionFunc fun(obj:Ability):string[]
+---@param modify nil|string[]|string|noteTplDescriptionFunc
 ---@return self|string[]
 function _.description(modify) end
 

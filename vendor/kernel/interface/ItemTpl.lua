@@ -84,8 +84,9 @@ function _.name(modify) end
 ---@return self|string
 function _.icon(modify) end
 
---- 物品描述体
----@param modify string[]|nil
+--- 描述体
+---@alias noteTplDescriptionFunc fun(obj:Item):string[]
+---@param modify nil|string[]|string|noteTplDescriptionFunc
 ---@return self|string[]
 function _.description(modify) end
 

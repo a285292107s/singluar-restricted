@@ -141,7 +141,8 @@ function _.level(modify) end
 ---@return self|number
 function _.abilityPoint(modify) end
 
---- 单位描述体
----@param modify string[]|nil
+--- 描述体
+---@alias noteTplDescriptionFunc fun(obj:Unit):string[]
+---@param modify nil|string[]|string|noteTplDescriptionFunc
 ---@return self|string[]
 function _.description(modify) end
