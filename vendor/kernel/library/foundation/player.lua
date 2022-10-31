@@ -462,18 +462,14 @@ player.evtOrder = J.Condition(function()
     end
 end)
 
-player.evtDead = J.Condition(function()
-    local deadUnit = h2u(J.GetTriggerUnit())
-    if (deadUnit == nil) then
-        return
-    end
+---@param deadUnit Unit
+player.evtKill = function(deadUnit)
     local killer = deadUnit.lastHurtSource()
     if (killer ~= nil) then
         killer.owner().kill("+=1")
     end
     deadUnit.prop("isAlive", false)
-    --- 触发死亡|击杀事件
-    event.trigger(deadUnit, EVENT.Unit.Dead, { triggerUnit = deadUnit, sourceUnit = killer })
+    --- 触发击杀事件
     if (killer ~= nil) then
         event.trigger(killer, EVENT.Unit.Kill, { triggerUnit = killer, targetUnit = deadUnit })
     end
@@ -481,8 +477,20 @@ player.evtDead = J.Condition(function()
     deadUnit.prop("isAttackAble", true)
     local rebornDelay = deadUnit.reborn()
     if (rebornDelay < 0) then
+        --- 触发死亡事件
+        event.trigger(deadUnit, EVENT.Unit.Dead, { triggerUnit = deadUnit, sourceUnit = killer })
         deadUnit.destroy(3)
     else
+        --- 触发假死事件
+        event.trigger(deadUnit, EVENT.Unit.FeignDead, { triggerUnit = deadUnit, sourceUnit = killer })
         ability.reborn(deadUnit, rebornDelay, 3.476, deadUnit.x(), deadUnit.y(), true)
     end
+end
+
+player.evtDead = J.Condition(function()
+    local deadUnit = h2u(J.GetTriggerUnit())
+    if (deadUnit == nil) then
+        return
+    end
+    player.evtKill(deadUnit)
 end)

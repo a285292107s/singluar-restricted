@@ -30,8 +30,11 @@ function ability.reborn(whichUnit, delay, invulnerable, x, y)
     end
     BuffClear(whichUnit)
     local rebornTimer
-    if (delay < 0.3) then
-        ability.rebornRevive(whichUnit, invulnerable, x, y, "DispelMagicTarget")
+    if (delay < 1) then
+        delay = math.max(0.1, delay)
+        time.setTimeout(delay, function(curTimer)
+            ability.rebornRevive(whichUnit, invulnerable, x, y, "DispelMagicTarget")
+        end)
     else
         whichUnit.owner().mark(TEXTURE_MARK.DREAM, delay, 255, 0, 0)
         --- 复活标志

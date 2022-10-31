@@ -13,7 +13,7 @@ function _.isPlaying() end
 ---@return string
 function _.label() end
 
---- 获取时长
+--- 获取时长[秒]
 ---@return number
 function _.duration() end
 

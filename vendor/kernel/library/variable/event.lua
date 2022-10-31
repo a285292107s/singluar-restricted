@@ -78,12 +78,15 @@ EVENT = {
         --- 单位出生
         ---@alias noteOnUnitBornData noteOnUnitBase
         Born = "unitBorn",
-        --- 复活
-        ---@alias noteOnUnitRebornData noteOnUnitBase
-        Reborn = "unitReborn",
         --- 单位死亡
         ---@alias noteOnUnitDeadData noteOnUnitBase|{sourceUnit:Unit}
         Dead = "unitDead",
+        --- 单位假死（可以复活的单位被击杀时触发）
+        ---@alias noteOnUnitFeignDeadData noteOnUnitDeadData
+        FeignDead = "unitFeignDead",
+        --- 复活
+        ---@alias noteOnUnitRebornData noteOnUnitBase
+        Reborn = "unitReborn",
         --- 附魔反应
         ---@alias noteOnUnitEnchantData noteOnUnitBase|{sourceUnit:Unit,enchantType:"附魔类型",radio:"伤害占比",damage:"伤害值",addition:"加成百分比"}
         Enchant = "unitEnchant",

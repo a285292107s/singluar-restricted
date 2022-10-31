@@ -5,7 +5,7 @@ local _
 ---@return number
 function _.handle() end
 
---- 获取时长
+--- 获取时长[秒]
 ---@return number
 function _.duration() end
 

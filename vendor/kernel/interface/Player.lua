@@ -112,12 +112,21 @@ function _.status(modify) end
 --- 财产管理
 --- 当data同时存在时，会根据当前玩家资源计算
 --- 当operator为=符号时，设定价值，当operator为+-*/时，会进行运算
+--- 当operator为+时会计算worthRatio
 ---@param operator string|nil "="|"+"|"-"|"*"|"/"
 ---@param data table|number 计算变动值
 ---@return self|table
 function _.worth(operator, data) end
 
+--- 财产获得率[%]
+--- 默认100
+--- 当使用worth方法且operator为+时有作用
+---@param modify number|nil
+---@return self|number
+function _.worthRatio(modify) end
+
 --- 售卖折价率[%]
+--- 默认50
 ---@param modify number
 ---@return number|self
 function _.sell(modify) end
