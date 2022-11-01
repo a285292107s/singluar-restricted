@@ -82,7 +82,7 @@ function ability.crackFly(options)
     if (sourceUnit ~= nil) then
         event.trigger(sourceUnit, EVENT.Unit.CrackFly, { triggerUnit = sourceUnit, targetUnit = targetUnit, distance = options.distance, height = options.height, duration = options.duration })
     end
-    event.trigger(targetUnit, EVENT.Unit.CrackFly, { triggerUnit = sourceUnit, sourceUnit = sourceUnit, distance = options.distance, height = options.height, duration = options.duration })
+    event.trigger(targetUnit, EVENT.Unit.Be.CrackFly, { triggerUnit = targetUnit, sourceUnit = sourceUnit, distance = options.distance, height = options.height, duration = options.duration })
 
     local frequency = 0.02
     if (options.animate) then
