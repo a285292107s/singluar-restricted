@@ -77,6 +77,12 @@ function ability.missile(options)
     local frequency = 0.02
     local speed = math.min(5000, math.max(100, options.speed or 500))
     local collision = 0
+    local weaponHeight = 0
+    if (isObject(options.sourceUnit, "Unit")) then
+        weaponHeight = options.sourceUnit.weaponHeight()
+    else
+        weaponHeight = 20
+    end
 
     ---@type number[]
     local sPoint = options.sourcePoint
@@ -90,23 +96,21 @@ function ability.missile(options)
     end
     local fac0 = math.angle(options.sourceUnit.x(), options.sourceUnit.y(), tPoint[1], tPoint[2])
     if (sPoint == nil) then
-        local sx, sy = math.polar(options.sourceUnit.x(), options.sourceUnit.y(), options.sourceUnit.collision(), fac0)
-        sPoint = { sx, sy, options.sourceUnit.stature() + options.sourceUnit.h() }
+        local sx, sy = math.polar(options.sourceUnit.x(), options.sourceUnit.y(), options.sourceUnit.weaponLength(), fac0)
+        sPoint = { sx, sy, weaponHeight + options.sourceUnit.h() }
     end
 
     local distance0 = math.distance(sPoint[1], sPoint[2], tPoint[1], tPoint[2])
     local dtStep = distance0 / speed / frequency
     local dtSpd = 1 / dtStep
 
-    local rotateY0 = 0
-    local height
+    local height = (options.height or 0)
     if (sPoint[3] >= tPoint[3]) then
-        height = sPoint[3] + (options.height or 0)
-        rotateY0 = -math._r2d * math.atan(height, distance0 / 2)
+        height = height + sPoint[3]
     else
-        height = tPoint[3] + (options.height or 0) / 2
-        rotateY0 = -math._r2d * math.atan(height, distance0 / 2)
+        height = height + tPoint[3]
     end
+    local rotateY0 = -math._r2d * math.atan(height, distance0 / 2)
     if (fac0 > 90 and fac0 < 270) then
         rotateY0 = -rotateY0
     end

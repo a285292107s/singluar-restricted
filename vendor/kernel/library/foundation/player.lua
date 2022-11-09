@@ -117,9 +117,11 @@ player.evtDamagedArrived = function(sourceUnit, targetUnit)
     if (isObject(sourceUnit, "Unit") == false or isObject(targetUnit, "Unit") == false) then
         return
     end
-    local v = Vwp(sourceUnit, targetUnit)
-    if (v) then
-        v.play()
+    if (sourceUnit.weaponSoundMode() == 1) then
+        local v = Vwp(sourceUnit, targetUnit)
+        if (v) then
+            v.play()
+        end
     end
     local dmg = sourceUnit.attack() + math.rand(0, sourceUnit.attackRipple())
     if (dmg >= 0.1) then
@@ -268,16 +270,33 @@ end
 player.evtAttacked = J.Condition(function()
     local attacker = h2u(J.GetAttacker())
     if (attacker ~= nil) then
-        local triggerUnit = h2u(J.GetTriggerUnit())
-        local slk = slk.i2v(attacker.modelId()).slk
+        local targetUnit = h2u(J.GetTriggerUnit())
+        local v = slk.i2v(attacker.modelId())
+        if (v == nil) then
+            print("attackerError")
+            return
+        end
+        local slk = v.slk
         local dmgpt = math.trunc(slk.dmgpt1, 3)
         local attackSpeed = math.min(math.max(attacker.attackSpeed(), -80), 400)
-        local delay = 0.25 + 0.9 * dmgpt / (1 + attackSpeed * 0.01)
-        attacker.prop("attackedTimer", time.setTimeout(delay, function(curTimer)
+        local delay = 0.25 + attacker.attackPoint() * dmgpt / (1 + attackSpeed * 0.01)
+        local ag = attacker.prop("attackedGather")
+        local t = time.setTimeout(delay, function(curTimer)
+            ag.set(curTimer.id(), nil)
             curTimer.destroy()
-            attacker.prop("attackedTimer", NIL)
-            player.evtDamaged(attacker, triggerUnit)
-        end))
+            if (attacker.weaponSoundMode() == 2) then
+                local v = Vwp(attacker, targetUnit)
+                if (v) then
+                    v.play()
+                end
+            end
+            player.evtDamaged(attacker, targetUnit)
+        end)
+        if (isArray(ag) == false) then
+            ag = Array()
+            attacker.prop("attackedGather", ag)
+        end
+        ag.set(t.id(), t)
     end
 end)
 
@@ -424,11 +443,15 @@ player.evtOrder = J.Condition(function()
        851972:STOP 停止
    ]]
     if (orderId ~= 851983) then
-        local attackedTimer = triggerUnit.prop("attackedTimer")
-        if (isObject(attackedTimer, "Timer")) then
-            attackedTimer.destroy()
-            triggerUnit.prop("attackedTimer", NIL)
-            attackedTimer = nil
+        ---@type Array
+        local ag = triggerUnit.prop("attackedGather")
+        if (isArray(ag)) then
+            ag.forEach(function(key, val)
+                if (isObject(val, "Timer")) then
+                    ag.set(key, nil)
+                    val.destroy()
+                end
+            end, true)
         end
     end
     if (orderId == 851993) then

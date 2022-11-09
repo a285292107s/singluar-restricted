@@ -57,6 +57,12 @@ function _.modelScale(modify) end
 ---@return self|number
 function _.animateScale(modify) end
 
+--- 单位攻击动作击出比率点[%]
+--- 默认0.8，范围[0-1.5]
+---@param modify number|nil
+---@return self|number
+function _.attackPoint(modify) end
+
 --- 单位转身速度[0.00-1.00]
 ---@param modify number|nil
 ---@return self|number
@@ -96,10 +102,29 @@ function _.icon(modify) end
 ---@return self|MATERIAL
 function _.material(modify) end
 
+--- 单位武器声音模式
+--- 默认1，可选2
+--- 1为击中时发声，2为攻击点动作时发声
+---@param modify number|nil
+---@return self|number
+function _.weaponSoundMode(modify) end
+
 --- 单位武器声音
 ---@param modify string|nil
 ---@return self|string
 function _.weaponSound(modify) end
+
+--- 武器长度
+--- 默认50，箭矢将从伸长的位置开始生成
+---@param modify number|nil
+---@return self|number
+function _.weaponLength(modify) end
+
+--- 武器高度
+--- 默认30，箭矢将从对应高度的位置开始生成
+---@param modify number|nil
+---@return self|number
+function _.weaponHeight(modify) end
 
 --- 单位移动类型
 ---@param modify string|nil

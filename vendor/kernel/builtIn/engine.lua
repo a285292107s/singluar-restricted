@@ -6,6 +6,7 @@ JassCommon = require("jass.common")
 JassGlobals = require("jass.globals")
 JassSlk = require("jass.slk")
 JassJapi = require("jass.japi")
+JassHook = require("jass.hook")
 
 -- 自定义J
 J = {}
@@ -209,6 +210,7 @@ J.EndGame = JassCommon["EndGame"]
 J.EndThematicMusic = JassCommon["EndThematicMusic"]
 J.EnumDestructablesInRect = JassCommon["EnumDestructablesInRect"]
 J.EnumItemsInRect = JassCommon["EnumItemsInRect"]
+J.EmptyFunc = function() end
 J.ExecuteFunc = JassCommon["ExecuteFunc"]
 J.Filter = JassCommon["Filter"]
 J.FinishUbersplat = JassCommon["FinishUbersplat"]
