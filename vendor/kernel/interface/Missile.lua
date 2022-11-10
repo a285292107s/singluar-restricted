@@ -11,22 +11,27 @@ function _.modelAlias(modify) end
 ---@return self|number
 function _.priority(modify) end
 
---- 位移速度
+--- 模型缩放，默认1.0
+---@param modify number|nil
+---@return self|number
+function _.scale(modify) end
+
+--- 位移速度，默认600
 ---@param modify number|nil
 ---@return self|number
 function _.speed(modify) end
 
---- 离地高度
+--- 离地高度，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.height(modify) end
 
---- 加速度
+--- 加速度，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.acceleration(modify) end
 
---- 震动模式
+--- 震动模式，默认0
 --- 填写 rand 则随机颤动
 ---@param modify number|nil|"'rand'"
 ---@return self|number|"'rand'"
@@ -38,27 +43,27 @@ function _.shake(modify) end
 ---@return self|number
 function _.shakeOffset(modify) end
 
---- 是否自动追踪
+--- 是否自动追踪，默认false
 ---@param modify boolean|nil
 ---@return self|boolean
 function _.homing(modify) end
 
--- 加特林效果
+-- 加特林效果，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.gatlin(modify) end
 
--- 散射效果
+-- 散射效果，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.scatter(modify) end
 
--- 散射范围
+-- 散射范围，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.radius(modify) end
 
--- 反弹效果
+-- 反弹效果，默认0
 ---@param modify number|nil
 ---@return self|number
 function _.reflex(modify) end

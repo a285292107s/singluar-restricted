@@ -193,6 +193,7 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                     scale = sourceUnit.modelScale(),
                     sourceUnit = sourceUnit,
                     targetUnit = targetUnit,
+                    scale = m.scale(),
                     speed = m.speed(),
                     height = m.height(),
                     acceleration = m.acceleration(),
@@ -223,6 +224,7 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                             scale = options.scale,
                             sourceUnit = sourceUnit,
                             targetUnit = targetUnit,
+                            scale = options.scale,
                             speed = options.speed,
                             height = options.height,
                             acceleration = options.acceleration,
@@ -249,6 +251,7 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                             scale = options.scale,
                             sourceUnit = sourceUnit,
                             targetUnit = enumUnit,
+                            scale = options.scale,
                             speed = options.speed,
                             height = options.height,
                             acceleration = options.acceleration,
@@ -276,6 +279,8 @@ player.evtAttacked = J.Condition(function()
             print("attackerError")
             return
         end
+        event.trigger(attacker, EVENT.Unit.BeforeAttack, { triggerUnit = attacker, targetUnit = targetUnit })
+        event.trigger(targetUnit, EVENT.Unit.Be.BeforeAttack, { triggerUnit = targetUnit, sourceUnit = attacker })
         local slk = v.slk
         local dmgpt = math.trunc(slk.dmgpt1, 3)
         local attackSpeed = math.min(math.max(attacker.attackSpeed(), -80), 400)

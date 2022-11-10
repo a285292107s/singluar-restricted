@@ -57,6 +57,9 @@ EVENT = {
 
     ---@alias noteOnUnitBase {triggerUnit:Unit,triggerAbility:Ability,triggerItem:Item}
     Unit = {
+        --- 准备攻击
+        ---@alias noteOnUnitBeforeAttackData noteOnUnitBase|{targetUnit:Unit}
+        BeforeAttack = "unitBeforeAttack",
         --- 攻击
         ---@alias noteOnUnitAttackData noteOnUnitBase|{targetUnit:Unit,damage:"攻击伤害值"}
         Attack = "unitAttack",
@@ -163,6 +166,9 @@ EVENT = {
         ---@alias noteOnUnitStunData noteOnUnitBase|{targetUnit:Unit,duration:number}
         Stun = "unitStun",
         Be = {
+            --- 被准备攻击
+            ---@alias noteOnUnitBeBeforeAttackData noteOnUnitBase|{sourceUnit:Unit}
+            BeforeAttack = "be:unitBeforeAttack",
             --- 被攻击
             ---@alias noteOnUnitBeAttackData noteOnUnitHurtData
             Attack = "be:unitAttack",
