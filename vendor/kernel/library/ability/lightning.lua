@@ -5,7 +5,7 @@
 ---@param x2 number
 ---@param y2 number
 ---@param z2 number
----@param duration number 持续时间
+---@param duration number 持续时间|-1则永久
 ---@return number|nil
 function ability.lightning(lType, x1, y1, z1, x2, y2, z2, duration)
     if (lType == nil) then
@@ -17,16 +17,17 @@ function ability.lightning(lType, x1, y1, z1, x2, y2, z2, duration)
     x2 = x2 or 0
     y2 = y2 or 0
     z2 = z2 or 0
-    duration = math.max(0.1, duration or 0.2)
-
+    if (duration ~= -1) then
+        duration = math.max(0.1, duration or 0.2)
+    end
     local lt = J.AddLightningEx(lType.value, true, x1, y1, z1, x2, y2, z2)
-    J.handleRef(lt)
     if (lType.effect) then
         effect.xyz(lType.effect, x2, y2, z2, 0.25)
     end
-    time.setTimeout(duration, function()
-        J.DestroyLightning(lt)
-        J.handleUnRef(lt)
-    end)
+    if (duration > 0) then
+        time.setTimeout(duration, function()
+            J.DestroyLightning(lt)
+        end)
+    end
     return lt
 end
