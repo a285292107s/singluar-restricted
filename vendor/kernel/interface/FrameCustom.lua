@@ -1,4 +1,4 @@
----@type FrameCustom
+---@class FrameCustom
 local _
 
 --- fdf名称
@@ -7,7 +7,7 @@ local _
 function _.fdfName() end
 
 --- 透明度
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.alpha(modify) end
 
@@ -16,7 +16,7 @@ function _.alpha(modify) end
 ---@see x 坐标偏移
 ---@see y 坐标偏移
 ---@alias noteFrameShowGradient {duration:number,x:number,y:number}
----@param modify boolean|nil
+---@param modify? boolean|nil
 ---@param options noteFrameShowGradient
 ---@return self
 function _.showGradient(modify, options) end

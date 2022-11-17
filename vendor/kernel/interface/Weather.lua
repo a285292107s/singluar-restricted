@@ -1,4 +1,4 @@
----@type Weather
+---@class Weather
 local _
 
 --- handle
@@ -14,11 +14,11 @@ function _.bindRect() end
 function _.weatherType() end
 
 --- 是否启用
----@param modify boolean
+---@param modify? boolean
 ---@return self|boolean
 function _.enable(modify) end
 
 --- 存在周期
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number|-1
 function _.period(modify) end

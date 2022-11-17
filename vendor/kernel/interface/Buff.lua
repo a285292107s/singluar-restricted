@@ -1,4 +1,4 @@
----@type Buff
+---@class Buff
 local _
 
 --- 持续时间
@@ -24,9 +24,9 @@ function _.name() end
 function _.diff() end
 
 --- 预期执行
----@return void
+---@return nil
 function _.purpose() end
 
 --- 执行回滚
----@return void
+---@return nil
 function _.rollback() end

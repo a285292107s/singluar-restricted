@@ -1,4 +1,4 @@
----@type Destructable
+---@class Destructable
 local _
 
 --- handle
@@ -33,27 +33,27 @@ function _.modelId() end
 function _.modelAlias() end
 
 --- 面向角度
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.facing(modify) end
 
 --- 缩放
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.scale(modify) end
 
 --- 板式
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.variation(modify) end
 
 --- 闭塞高度
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.occluderHeight(modify) end
 
 --- 无敌
----@param modify boolean|nil
+---@param modify? boolean|nil
 ---@return self|boolean
 function _.invulnerable(modify) end
 
@@ -66,12 +66,12 @@ function _.show() end
 function _.hide() end
 
 --- 生命值
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.hp(modify) end
 
 --- 当前生命值
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.hpCur(modify) end
 

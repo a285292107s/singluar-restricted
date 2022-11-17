@@ -1,8 +1,8 @@
----@type FrameTooltips
+---@class FrameTooltips
 local _
 
 --- kit
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.kit() end
 

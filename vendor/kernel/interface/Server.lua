@@ -1,4 +1,4 @@
----@type Server
+---@class Server
 local _
 
 --- 缓存数据
@@ -19,16 +19,16 @@ function _.load(key, default) end
 --- 保存服务器数据
 ---@param key string
 ---@param value string|number|boolean
----@return void
+---@return nil
 function _.save(key, value) end
 
 --- 清理服务器数据
 ---@param key string
----@return void
+---@return nil
 function _.clear(key) end
 
 --- 设置房间服务器数据
 ---@param key string
 ---@param value string|number
----@return void
+---@return nil
 function _.room(key, value) end

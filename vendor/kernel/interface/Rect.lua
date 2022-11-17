@@ -1,4 +1,4 @@
----@type Rect
+---@class Rect
 local _
 
 --- handle
@@ -19,12 +19,12 @@ function _.isBorder(x, y) end
 
 --- 区域名称
 --- 默认与key相同
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.name(modify) end
 
 --- 形状 | 方 | 圆
----@param modify nil|string | "'square'" | "'round'"
+---@param modify? nil|string | "'square'" | "'round'"
 ---@return self|string
 function _.shape(modify) end
 
@@ -45,22 +45,22 @@ function _.xMax() end
 function _.yMax() end
 
 --- 中心X
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.x(modify) end
 
 --- 中心Y
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.y(modify) end
 
 --- 宽
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.width(modify) end
 
 --- 高
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.height(modify) end
 

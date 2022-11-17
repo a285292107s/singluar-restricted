@@ -1,4 +1,4 @@
----@type Frame
+---@class Frame
 local _
 
 ---@alias noteOnFrameEvtData {triggerFrame:Frame,triggerPlayer:Player}
@@ -17,7 +17,7 @@ function _.frameIndex() end
 function _.kit() end
 
 --- 自适应
----@param modify boolean|nil
+---@param modify? boolean|nil
 ---@return self|boolean
 function _.adaptive(modify) end
 
@@ -28,7 +28,7 @@ function _.adaptive(modify) end
 function _.anchor() end
 
 --- 设置父节点
----@param modify Frame|nil
+---@param modify? Frame|nil
 ---@return self|Frame
 function _.parent(modify) end
 
@@ -68,7 +68,7 @@ function _.relation(point, relativeFrame, relativePoint, x, y) end
 function _.absolut(point, x, y) end
 
 --- 显示
----@param modify boolean|nil
+---@param modify? boolean|nil
 ---@param delay number 延时
 ---@return self|boolean
 function _.show(modify, delay) end

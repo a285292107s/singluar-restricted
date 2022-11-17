@@ -1,4 +1,4 @@
----@type Image
+---@class Image
 local _
 
 --- handle
@@ -6,7 +6,7 @@ local _
 function _.handle() end
 
 --- 贴图路径
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 ---@return number|nil
 function _.texture(modify) end
@@ -18,7 +18,7 @@ function _.texture(modify) end
 function _.size(width, height) end
 
 --- 显示
----@param modify boolean|nil
+---@param modify? boolean|nil
 ---@return self|boolean
 function _.show(modify) end
 

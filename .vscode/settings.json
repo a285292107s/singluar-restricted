@@ -1,0 +1,22 @@
+{
+    "Lua.workspace.library": [
+        "${3rd}/Jass/library"//当你调用j函数时，会有注释说明
+    ],
+    "Lua.diagnostics.disable": [
+        "missing-parameter",
+        "lowercase-global",
+        "missing-return",
+        "missing-return-value"
+    ],
+    "search.exclude": {
+        "**/vendor/lni/": true,
+        "**/vendor/models/": true,
+        "**/vendor/w3x2lni/": true,
+        "**/vendor/WE/": true,
+        "LICENSE": true
+    },
+    "Lua.diagnostics.globals": [
+        "bop",
+        "Object"
+    ]
+}

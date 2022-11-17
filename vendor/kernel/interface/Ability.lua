@@ -1,8 +1,8 @@
----@type Ability
+---@class Ability
 local _
 
 --- 当前技能栏位置
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number|nil
 function _.abilitySlotIndex(modify) end
 
@@ -11,12 +11,12 @@ function _.abilitySlotIndex(modify) end
 function _.hotkey() end
 
 --- 当前绑定单位
----@param modify Unit|nil
+---@param modify? Unit|nil
 ---@return self|Unit
 function _.bindUnit(modify) end
 
 --- 当前绑定物品
----@param modify Item|nil
+---@param modify? Item|nil
 ---@type fun(modify:Item|nil):self|Item
 function _.bindItem(modify) end
 
@@ -43,7 +43,7 @@ function _.ban(reason) end
 function _.allow(reason) end
 
 --- 技能当前经验
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.exp(modify) end
 
@@ -53,7 +53,7 @@ function _.exp(modify) end
 function _.expNeed(whichLevel) end
 
 --- 立即冷却
----@return void
+---@return nil
 function _.coolingInstant() end
 
 --- 是否冷却中
@@ -76,5 +76,5 @@ function _.isCastTarget(targetObj) end
 ---@see targetZ 对单位、点、范围时存在
 ---@alias noteAbilitySpellEvt {targetUnit:Unit,targetX:number,targetY:number,targetZ:number}
 ---@param evtData noteAbilitySpellEvt
----@return void
+---@return nil
 function _.effective(evtData) end

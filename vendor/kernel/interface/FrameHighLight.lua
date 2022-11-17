@@ -1,2 +1,2 @@
----@type FrameHighLight
+---@class FrameHighLight
 local _

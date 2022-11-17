@@ -1,4 +1,4 @@
----@type Bgm
+---@class Bgm
 local _
 
 --- 是否播放中
@@ -6,7 +6,7 @@ local _
 function _.isPlaying() end
 
 --- 音量[0%-100%]
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.volume(modify) end
 
@@ -16,5 +16,5 @@ function _.stop() end
 
 --- 播放
 ---@param musicAlias string
----@return void
+---@return nil
 function _.play(musicAlias) end

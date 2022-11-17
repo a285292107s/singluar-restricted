@@ -1,4 +1,4 @@
----@type Dialog
+---@class Dialog
 local _
 
 --- handle
@@ -6,7 +6,7 @@ local _
 function _.handle() end
 
 --- 标题
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.title(modify) end
 

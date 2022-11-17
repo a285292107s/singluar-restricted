@@ -1,4 +1,4 @@
----@type FrameBar
+---@class FrameBar
 local _
 
 --- 子贴图对象
@@ -22,23 +22,23 @@ function _.value(ratio, width, height) end
 
 --- 条状底图
 ---@param side string | "'value'" | "'mark'" 条性对应位置
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.texture(side, modify) end
 
 --- 文本排列
 ---@param layout number LAYOUT_ALIGN_?
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|number
 function _.textAlign(layout, modify) end
 
 --- 字号大小
 ---@param layout number LAYOUT_ALIGN_?
----@param modify number|nil
+---@param modify? number|nil
 function _.fontSize(layout, modify) end
 
 --- 文本内容
 ---@param layout number LAYOUT_ALIGN_?
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|string
 function _.text(layout, modify) end

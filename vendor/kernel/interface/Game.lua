@@ -1,4 +1,4 @@
----@type Game
+---@class Game
 local _
 
 --- 通用简化型事件注册
@@ -8,7 +8,7 @@ local _
 function _.onEvent(evt, ...) end
 
 --- 游戏名字（地图名字）
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.name(modify) end
 
@@ -17,7 +17,7 @@ function _.name(modify) end
 function _.playingQuantityStart() end
 
 --- 正在游戏的玩家数
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.playingQuantity(modify) end
 

@@ -1,4 +1,4 @@
----@type Vwp
+---@class Vwp
 local _
 
 --- handle
@@ -18,27 +18,27 @@ function _.label() end
 function _.duration() end
 
 --- 音量[0-100]
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.volume(modify) end
 
 --- 通道
----@param modify SOUND_CHANNEL|nil
+---@param modify? SOUND_CHANNEL|nil
 ---@return self|SOUND_CHANNEL
 function _.channel(modify) end
 
 --- 音高
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.pitch(modify) end
 
 --- 衰减截断范围
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.distanceCutoff(modify) end
 
 --- 衰减范围[最小,最大]
----@param modify {number,number}|nil
+---@param modify? {number,number}|nil
 ---@return self|{number,number}
 function _.distances(modify) end
 

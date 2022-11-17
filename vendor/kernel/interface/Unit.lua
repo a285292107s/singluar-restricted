@@ -1,4 +1,4 @@
----@type Unit
+---@class Unit
 local _
 
 --- handle
@@ -10,8 +10,8 @@ function _.handle() end
 function _.periodRemain() end
 
 --- 经验值[当前]
----@param modify number|nil
----@return self|number
+---@param modify? number|nil
+---@return Unit|number
 function _.exp(modify) end
 
 --- 获取英雄升级到某等级需要的总经验；根据Game的unitExpNeeds
@@ -136,7 +136,7 @@ function _.isWhirlwind() end
 function _.isAbilityChantCasting() end
 
 --- 是否持续施法中
----@return self|boolean
+---@return Unit|boolean
 function _.isAbilityKeepCasting() end
 
 --- 判断单位是否处于施法中止态
@@ -172,99 +172,100 @@ function _.z() end
 function _.h() end
 
 --- 面向角度
----@param modify number|nil
----@return self|number
+---@param modify? number|nil
+---@return Unit|number
 function _.facing(modify) end
 
 --- 单位拥有者
----@param modify Player|nil
----@return self|Player
+---@param modify? Player|nil
+---@return Unit|Player
 function _.owner(modify) end
 
 --- 单位队伍颜色
 --- 使用玩家索引1-12决定颜色值
----@param modify number|nil
----@return self|number
+---@param modify? number|nil
+---@return Unit|number
 function _.teamColor(modify) end
 
 --- 最后受伤来源
----@param modify Unit|nil
----@return self|nil
+---@param modify? Unit|nil
+---@return Unit|nil
 function _.lastHurtSource(modify) end
 
 --- 最后伤害目标
----@param modify Unit|nil
----@return self|nil
+---@param modify? Unit|nil
+---@return Unit|nil
 function _.lastDamageTarget(modify) end
 
 --- 联合位移单位到X,Y坐标
 ---@param x number
 ---@param y number
----@return self
+---@return Unit
 function _.position(x, y) end
 
 --- 命令单位做动画动作，如 "attack"
 --- 当动作为整型序号时，自动播放对应的序号行为(每种模型的序号并不一致)
 ---@param animate number|string
----@return self
+---@return Unit
 function _.animate(animate) end
 
 --- 单位添删动画动作
 ---@param animate string
 ---@param enable boolean
----@return self
+---@return Unit
 function _.animateProperties(animate, enable) end
 
 --- 杀死单位
----@return self
+---@return Unit
 function _.kill() end
 
 --- 以爆炸杀死单位
----@return self
+---@return Unit
 function _.exploded() end
 
 --- 单位发布停止命令
----@return self
+---@return Unit
 function _.orderStop() end
 
 --- 单位发布伫立命令
----@return self
+---@return Unit
 function _.orderHold() end
 
 --- 单位发布攻击命令
----@param x:number
----@param y:number
----@return self
+---@param x number
+---@param y number
+---@return Unit
 function _.orderAttack(x, y) end
 
 --- 单位发布命令跟随某目标单位
 ---@param targetUnit Unit
----@return self
+---@return Unit
 function _.orderFollowTargetUnit(targetUnit) end
 
 --- 单位发布命令攻击某目标单位
 ---@param targetUnit Unit
----@return self
+---@return Unit
 function _.orderAttackTargetUnit(targetUnit) end
 
 --- 单位发布移动命令
----@param x:number
----@param y:number
----@return self
+---@param x number
+---@param y number
+---@return Unit
 function _.orderMove(x, y) end
 
 --- 单位发布AI移动命令
----@param x:number
----@param y:number
----@return self
+---@param x number
+---@param y number
+---@return Unit
 function _.orderAIMove(x, y) end
 
 --- 单位发布巡逻移动命令
----@param x:number
----@param y:number
----@return self
+---@param x number
+---@param y number
+---@return Unit
 function _.orderPatrol(x, y) end
 
+---@alias noteUnitRoute {x:number,y:number, f:function}
 --- 单位发布路线移动
 --- 可以被中途阻扰，但依然会非常坚持的一直遵循后续路线坐标移动下去
 --- 可以在每一段停顿点加入一个自定义函数来做出额外的动作（路线会被强行暂停，动作中需要手动恢复）
@@ -273,10 +274,9 @@ function _.orderPatrol(x, y) end
 --- 使用 orderRoutePause 来暂停路线行为（但会继续走完以出发的路段）
 --- 使用 orderRouteResume 来恢复路线行为（在暂停10秒后如还未恢复，路线会自动废除）
 --- 使用 orderRoute 来消除路线行为
----@alias noteUnitRoute {number,number,fun(orderUnit:Unit)}
 ---@param isLoop boolean 是否循环
----@param routes noteUnitRoute[]
----@return self
+---@param routes noteUnitRoute[] function(orderUnit:Unit)
+---@return Unit
 function _.orderRoute(isLoop, routes) end
 
 --- 设计单位已发布的路线某一段
@@ -287,15 +287,15 @@ function _.orderRoute(isLoop, routes) end
 function _.orderRouteSet(index, route) end
 
 --- 废弃单位发布的路线移动
----@return void
+---@return nil
 function _.orderRouteDestroy() end
 
 --- 暂停单位发布的路线移动
----@return void
+---@return nil
 function _.orderRoutePause() end
 
 --- 恢复单位发布的路线移动
----@return self
+---@return Unit
 function _.orderRouteResume() end
 
 --- 在单位位置创建特效
@@ -336,13 +336,13 @@ function _.abilityKeepCastingRemain() end
 function _.itemSlot() end
 
 --- 单位距离过程
----@param target Unit|Item|{number,number}
+---@param target Unit|Item|{x:number ,y:number}
 ---@param judgeDistance number
----@param callFunc fun():void
----@return void
+---@param callFunc fun():nil
+---@return nil
 function _.distanceAction(target, judgeDistance, callFunc) end
 
 --- 单位捡物品（存在捡取过程）
 ---@param targetItem Item
----@return void
+---@return nil
 function _.pickItem(targetItem) end

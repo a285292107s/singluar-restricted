@@ -1,8 +1,8 @@
----@type FrameModel
+---@class FrameModel
 local _
 
 --- 模型
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.model(modify) end
 

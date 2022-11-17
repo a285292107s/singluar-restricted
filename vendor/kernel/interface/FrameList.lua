@@ -1,4 +1,4 @@
----@type FrameList
+---@class FrameList
 local _
 
 --- 自文本对象
@@ -18,12 +18,12 @@ function _.childButtons(index) end
 function _.max() end
 
 --- 组合方向
----@param modify nil|string|"'vertical'"|"'horizontal'"
+---@param modify? nil|string|"'vertical'"|"'horizontal'"
 ---@return self|string
 function _.direction(modify) end
 
 --- 文本字号[6-16]
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.fontSize(modify) end
 

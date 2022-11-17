@@ -1,4 +1,4 @@
----@type AbilityTpl
+---@class AbilityTpl
 local _
 
 --- 通用型事件注册
@@ -33,33 +33,33 @@ function _.onUnitEvent(evt, ...) end
 function _.attributes(attrs) end
 
 --- 技能名
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.name(modify) end
 
 --- 技能类型（目标类型）
----@param modify string|nil ABILITY_TARGET_TYPE
+---@param modify? string|nil ABILITY_TARGET_TYPE
 ---@return self|string
 function _.targetType(modify) end
 
 --- 技能图标
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.icon(modify) end
 
 --- 发动施法动作
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.castAnimation(modify) end
 
 --- 持续施法动作
----@param modify string|nil
+---@param modify? string|nil
 ---@return self|string
 function _.keepAnimation(modify) end
 
 --- 施法目标允许(回调单位函数)
 ---@alias noteCastTargetAllowFunc fun(this:Ability,targetUnit:Unit):boolean
----@param modify noteCastTargetAllowFunc
+---@param modify? noteCastTargetAllowFunc
 ---@return self|noteCastTargetAllowFunc|nil
 function _.castTargetFilter(modify) end
 
@@ -125,22 +125,22 @@ function _.castHeightAdv(base, vary) end
 
 --- 描述体
 ---@alias noteTplDescriptionFunc fun(obj:Ability):string[]
----@param modify nil|string[]|string|noteTplDescriptionFunc
+---@param modify? nil|string[]|string|noteTplDescriptionFunc
 ---@return self|string[]
 function _.description(modify) end
 
 --- 技能最大级
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.levelMax(modify) end
 
 --- 技能当前等级
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.level(modify) end
 
 --- 技能升级所需技能点,小于1则无法升级
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.levelUpNeedPoint(modify) end
 
@@ -197,6 +197,6 @@ function _.castHeight(whichLevel) end
 --- 禁用指针条件 [圆/方范围]
 ---@alias noteAbilityBanCursor {x:number,y:number,radius:number,width:number,height:number}
 ---@alias noteAbilityBanCursorFunc fun(options:noteAbilityBanCursor)
----@param modify noteAbilityBanCursorFunc|nil
+---@param modify? noteAbilityBanCursorFunc|nil
 ---@return self|noteAbilityBanCursorFunc
 function _.banCursor(modify) end

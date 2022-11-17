@@ -1,4 +1,4 @@
----@type Player
+---@class Player
 local _
 
 --- 通用简化型事件注册
@@ -89,23 +89,23 @@ function _.cursor() end
 function _.mapLv() end
 
 --- 名称
----@param modify string
+---@param modify? string
 ---@return string|self
 function _.name(modify) end
 
 --- 队伍颜色
 --- 使用玩家索引1-12决定颜色值,单位会自动同步
----@param modify number
+---@param modify? number
 ---@return any|self
 function _.teamColor(modify) end
 
 --- 种族
----@param modify string
+---@param modify? string
 ---@return string|self
 function _.race(modify) end
 
 --- 状态值
----@param modify PLAYER_STATUS
+---@param modify? PLAYER_STATUS
 ---@return PLAYER_STATUS|self
 function _.status(modify) end
 
@@ -121,18 +121,18 @@ function _.worth(operator, data) end
 --- 财产获得率[%]
 --- 默认100
 --- 当使用worth方法且operator为+时有作用
----@param modify number|nil
+---@param modify? number|nil
 ---@return self|number
 function _.worthRatio(modify) end
 
 --- 售卖折价率[%]
 --- 默认50
----@param modify number
+---@param modify? number
 ---@return number|self
 function _.sell(modify) end
 
 --- 称号
----@param modify string
+---@param modify? string
 ---@return string|self
 function _.prestige(modify) end
 
@@ -190,7 +190,7 @@ function _.warehouseSlot() end
 function _.mark(path, duration, red, green, blue) end
 
 --- 玩家警告提示
----@param modify string
+---@param modify? string
 ---@param vcm boolean 是否播放音效
 ---@return self|string
 function _.alert(modify, vcm) end

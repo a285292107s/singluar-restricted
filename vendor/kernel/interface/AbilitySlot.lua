@@ -1,4 +1,4 @@
----@type AbilitySlot
+---@class AbilitySlot
 local _
 
 ---@return Unit
@@ -19,10 +19,10 @@ function _.tail() end
 --- 热键强制与位置顺序【ABILITY_HOTKEY】绑定，如果没有配置位置,从集合中选出一个位置自动赋予
 ---@param whichAbility AbilityTpl|Ability
 ---@param index number|nil 配置顺序位置
----@return void
+---@return nil
 function _.push(whichAbility, index) end
 
 --- 移除一个技能
 ---@param index number|nil 技能在技能栏中的索引
----@return void
+---@return nil
 function _.remove(index) end
