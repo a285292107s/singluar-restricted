@@ -1,0 +1,20 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "type": "shell",
+    "tasks": [
+        {
+            "label": "运行rabbit",
+            "command": "${workspaceRoot}/sl.exe run rabbit",
+        },
+        {
+            "label": "关闭war3进程",
+            "command": "${workspaceRoot}/sl.exe kill",
+        },
+        {
+            "label": "用WE打开rabbit",
+            "command": "${workspaceRoot}/sl.exe we rabbit",
+        },
+    ]
+}  
