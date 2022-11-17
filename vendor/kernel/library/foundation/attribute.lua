@@ -6,7 +6,7 @@ attribute = attribute or {}
 ---@param targetUnit Unit
 ---@param lv number 当前等级
 ---@param diff number 等级差值
----@return void
+---@return nil
 function attribute.clever(attributes, targetUnit, lv, diff)
     if (isObject(targetUnit, "Unit") == false) then
         return

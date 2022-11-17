@@ -67,7 +67,7 @@ function Process(name)
             return this
         end
 
-        ---@type fun():void
+        ---@type fun():nil
         this.over = function()
             if (this == ProcessCurrent) then
                 if (type(this._onOver) == "function") then
@@ -77,7 +77,7 @@ function Process(name)
             end
         end
 
-        ---@type fun(nextStageName:string):void
+        ---@type fun(nextStageName:string):nil
         this.next = function(nextStageName)
             this.over()
             if (nextStageName ~= nil) then
@@ -98,7 +98,7 @@ function Process(name)
             this.start()
         end
 
-        ---@type fun():void
+        ---@type fun():nil
         this.start = function()
             if (isProcess(ProcessCurrent)) then
                 ProcessCurrent.over()

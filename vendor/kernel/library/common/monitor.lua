@@ -12,13 +12,13 @@ monitor._m = monitor._m or {}
 --- 行为会在listen时判断是否已注册，没有注册的行为没法执行
 --- 相同的key可覆盖式更新
 --- 一般写在setup阶段
----@alias noteMonAction fun(object: any):void
+---@alias noteMonAction fun(object: any):nil
 ---@alias noteMonRemoveFilter fun(object: any):boolean
 ---@param key string 唯一key
 ---@param frequency number 周期间隔，每个周期会把受监听对象回调
 ---@param actionFunc noteMonAction | "function(object) end" 监听操作
 ---@param ignoreFilter nil|noteMonRemoveFilter | "function(object) end" 移除监听对象的适配条件
----@return void
+---@return nil
 function monitor.create(key, frequency, actionFunc, ignoreFilter)
     if (type(key) == "string" and type(actionFunc) == "function") then
         frequency = frequency or 1

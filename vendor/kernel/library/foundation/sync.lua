@@ -85,7 +85,7 @@ end
 --- 当收到同步操作
 --- 与 send 配套
 --- 此方法不能异步调用
----@alias noteOnHSync fun(syncData:{syncPlayer:Player,syncKey:"触发索引",transferData:"传输的数据"}):void
+---@alias noteOnHSync fun(syncData:{syncPlayer:Player,syncKey:"触发索引",transferData:"传输的数据"}):nil
 ---@param key string
 ---@param callback noteOnHSync
 ---@return number

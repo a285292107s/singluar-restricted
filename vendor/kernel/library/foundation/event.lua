@@ -13,7 +13,7 @@ event_reaction = event_reaction or {}
 --- 触发池的action是不会被同一个handle注册两次的，与on事件并不相同
 ---@param conditionFunc number
 ---@param regEvent function
----@return void
+---@return nil
 function event.pool(conditionFunc, regEvent)
     if (type(regEvent) ~= "function") then
         return
@@ -33,7 +33,7 @@ end
 --- 捕捉反应
 ---@param evt string 事件类型
 ---@vararg any
----@return void
+---@return nil
 function event.reaction(evt, ...)
     local opt = { ... }
     ---@type string 关联反应标识符
@@ -91,7 +91,7 @@ end
 ---@param obj Object
 ---@param evt string 事件类型
 ---@param key string|nil
----@return void
+---@return nil
 function event.unregister(obj, evt, key)
     if (obj == nil or evt == nil) then
         return
@@ -113,7 +113,7 @@ end
 ---@param obj Object|string
 ---@param evt string 事件类型字符
 ---@vararg string|function
----@return void
+---@return nil
 function event.register(obj, evt, ...)
     if (obj == nil) then
         return

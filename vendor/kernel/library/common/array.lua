@@ -90,7 +90,7 @@ function Array()
     end
 
     --- 遍历
-    ---@alias noteArrayEach fun(key: "key", value: "value"):void
+    ---@alias noteArrayEach fun(key: "key", value: "value"):nil
     ---@param callFunc noteArrayEach | "function(key,value) end"
     ---@param safety boolean
     this.forEach = function(callFunc, safety)

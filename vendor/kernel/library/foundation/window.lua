@@ -6,10 +6,10 @@ window = window or {}
 window._evt = window._evt or nil
 
 --- 当游戏窗口大小异步改变
----@alias noteOnWindowResizeData fun(evtData:{triggerPlayer:Player):void
+---@alias noteOnWindowResizeData fun(evtData:{triggerPlayer:Player):nil
 ---@param key string
 ---@param callFunc noteOnWindowResizeData
----@return void
+---@return nil
 function window.onResize(key, callFunc)
     if (window._evt == nil) then
         if (callFunc == nil) then

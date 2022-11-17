@@ -42,7 +42,7 @@ end
 
 ---@param this Object
 ---@param handle number
----@return void
+---@return nil
 function href(this, handle)
     if (this.__ID__ ~= nil) then
         local un = function()

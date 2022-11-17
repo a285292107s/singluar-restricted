@@ -100,7 +100,7 @@ EVENT = {
         ---@alias noteOnUnitHPSuckAbilityData noteOnUnitBase|{targetUnit:Unit,value:"吸血值",percent:"吸血百分比"}
         HPSuckAbility = "unitHPSuckAbility",
         --- 候住命令
-        ---@alias noteOnUnitStopData noteOnUnitBase
+        ---@alias noteOnUnitHoldData noteOnUnitBase
         Hold = "unitHold",
         --- 单位受伤
         ---@alias noteOnUnitHurtData noteOnUnitBase|{sourceUnit:Unit,targetUnit:Unit,damage:"伤害值",damageSrc:"伤害来源",damageType:"伤害类型"}

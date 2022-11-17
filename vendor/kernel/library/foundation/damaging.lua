@@ -9,7 +9,7 @@ damaging.actions = Array()
 --- 伤害过程设定
 --- 伤害过程自上而下运行，对接ability damage函数的过程
 ---@param key string
----@param callFunc fun(options:noteOnUnitDamagingData):void
+---@param callFunc fun(options:noteOnUnitDamagingData):nil
 function damaging.defined(key, callFunc)
     damaging.actions.set(key, callFunc)
 end

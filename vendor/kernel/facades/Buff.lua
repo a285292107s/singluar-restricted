@@ -3,8 +3,8 @@
 ---@param name string
 ---@param duration number
 ---@param diff number 差异额
----@param purpose fun(buffObj:Object):void
----@param rollback fun(buffObj:Object):void
+---@param purpose fun(buffObj:Object):nil
+---@param rollback fun(buffObj:Object):nil
 ---@return nil|Buff
 function Buff(obj, name, duration, diff, purpose, rollback)
     if (type(obj) ~= "table" and obj.id() == nil) then

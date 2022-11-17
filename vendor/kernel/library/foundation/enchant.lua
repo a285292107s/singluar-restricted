@@ -78,7 +78,7 @@ end
 
 --- 附魔设定反应马甲函数，方便回调引用
 ---@alias noteEnchantReactionData {triggerUnit:Unit,sourceUnit:Unit,from:"触发附魔元素",to:"条件附魔元素",level:"层级"}
----@param callFunc fun(evtData:noteOnUnitEnchantData):void
+---@param callFunc fun(evtData:noteOnUnitEnchantData):nil
 function enchant.reaction(callFunc)
     return callFunc
 end
@@ -93,7 +93,7 @@ end
 ---@param key string
 ---@param label string 名字
 ---@param options {strengthen:number,resistance:number,append:table<number,{attach:string,effect:string}>,reaction:table<string,fun(evtData:noteOnUnitEnchantData)>}
----@return void
+---@return nil
 function enchant.defined(key, label, options)
     if (type(key) ~= "string" or type(label) ~= "string") then
         return

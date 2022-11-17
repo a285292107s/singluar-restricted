@@ -1,4 +1,4 @@
----@class
+---@type Player
 player = player or {}
 
 player.evtEsc = J.Condition(function()
@@ -112,7 +112,7 @@ player.evtChat = J.Condition(function()
     })
 end)
 
----@type fun(sourceUnit:Unit,targetUnit:Unit):void
+---@type fun(sourceUnit:Unit,targetUnit:Unit):nil
 player.evtDamagedArrived = function(sourceUnit, targetUnit)
     if (isObject(sourceUnit, "Unit") == false or isObject(targetUnit, "Unit") == false) then
         return
@@ -134,7 +134,7 @@ player.evtDamagedArrived = function(sourceUnit, targetUnit)
     end
 end
 
----@type fun(sourceUnit:Unit,targetUnit:Unit):void
+---@type fun(sourceUnit:Unit,targetUnit:Unit):nil
 player.evtDamaged = function(sourceUnit, targetUnit)
     if (isObject(sourceUnit, "Unit") == false or isObject(targetUnit, "Unit") == false) then
         return
@@ -170,7 +170,8 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                     key = "Unit", limit = lt.scatter(),
                     x = targetUnit.x(), y = targetUnit.y(), radius = lt.radius(),
                     filter = function(enumUnit)
-                        return enumUnit.isOther(targetUnit) and enumUnit.isAlive() and enumUnit.isEnemy(sourceUnit.owner())
+                        return enumUnit.isOther(targetUnit) and enumUnit.isAlive() and
+                            enumUnit.isEnemy(sourceUnit.owner())
                     end
                 }, function(enumUnit)
                     ability.lightning(
@@ -243,7 +244,8 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                         key = "Unit", limit = m.scatter(),
                         x = targetUnit.x(), y = targetUnit.y(), radius = m.radius(),
                         filter = function(enumUnit)
-                            return enumUnit.isOther(targetUnit) and enumUnit.isAlive() and enumUnit.isEnemy(sourceUnit.owner())
+                            return enumUnit.isOther(targetUnit) and enumUnit.isAlive() and
+                                enumUnit.isEnemy(sourceUnit.owner())
                         end
                     }, function(enumUnit)
                         local scatterOptions = {
@@ -342,7 +344,8 @@ player.evtOrderMoveRoute = function(triggerUnit, x, y, flag)
     if (pause == nil and type(route) == "table" and type(idx) == "number") then
         if (route[idx]) then
             if (flag == "stop" or math.distance(x, y, route[idx][1], route[idx][2]) < 100) then
-                event.trigger(triggerUnit, EVENT.Unit.MoveRoute, { triggerUnit = triggerUnit, x = x, y = y, inc = (flag ~= "stop") })
+                event.trigger(triggerUnit, EVENT.Unit.MoveRoute,
+                    { triggerUnit = triggerUnit, x = x, y = y, inc = (flag ~= "stop") })
                 res = true
             elseif (flag == "moving" and math.distance(x, y, route[idx][1], route[idx][2]) > 100) then
                 event.trigger(triggerUnit, EVENT.Unit.MoveRoute, { triggerUnit = triggerUnit, x = x, y = y, inc = false })
@@ -388,7 +391,8 @@ player.evtOrderMoveCatch = function(triggerUnit, tx, ty)
                     xl = xt
                     yl = yt
                     local step = 1 + triggerUnit.prop("movingStep")
-                    event.trigger(triggerUnit, EVENT.Unit.Moving, { triggerUnit = triggerUnit, x = xt, y = yt, step = step })
+                    event.trigger(triggerUnit, EVENT.Unit.Moving,
+                        { triggerUnit = triggerUnit, x = xt, y = yt, step = step })
                     triggerUnit.prop("movingStep", step)
                 end
                 local rRes = player.evtOrderMoveRoute(triggerUnit, xt, yt)

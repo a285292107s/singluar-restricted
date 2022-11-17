@@ -3,7 +3,7 @@ effect = effect or {}
 
 --- 删除特效
 ---@param e number
----@return void
+---@return nil
 function effect.destroy(e)
     if (e ~= nil) then
         J.DestroyEffect(e)
@@ -17,7 +17,7 @@ end
 ---@param x number
 ---@param y number
 ---@param z number
----@return void
+---@return nil
 function effect.scale(e, x, y, z)
     if (e ~= nil and x ~= nil and y ~= nil and z ~= nil) then
         japi.EXEffectMatScale(e, x, y, z)
@@ -27,7 +27,7 @@ end
 --- 特效速度
 ---@param e number
 ---@param spd number
----@return void
+---@return nil
 function effect.speed(e, spd)
     if (e ~= nil and spd ~= nil) then
         japi.EXSetEffectSpeed(e, spd)

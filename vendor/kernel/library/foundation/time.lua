@@ -151,7 +151,7 @@ end
 
 -- 设置一次性计时器
 ---@param period number
----@param callFunc fun(curTimer:Timer):void
+---@param callFunc fun(curTimer:Timer):nil
 ---@return Timer
 function time.setTimeout(period, callFunc)
     return time.periodic(false, period, callFunc)
@@ -159,7 +159,7 @@ end
 
 --- 设置周期性计时器
 ---@param period number
----@param callFunc fun(curTimer:Timer):void
+---@param callFunc fun(curTimer:Timer):nil
 ---@return Timer
 function time.setInterval(period, callFunc)
     return time.periodic(true, period, callFunc)

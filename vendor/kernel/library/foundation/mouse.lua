@@ -8,21 +8,21 @@ mouse._evt = mouse._evt or {}
 --- 设置鼠标坐标
 ---@param x number
 ---@param y number
----@return void
+---@return nil
 function mouse.position(x, y)
     japi.DzSetMousePos(x, y)
 end
 
 --- 当鼠标触发事件
 ---@protected
----@alias noteOnMouseGameData fun(evtData:{triggerPlayer:Player).void
+---@alias noteOnMouseGameData fun(evtData:{triggerPlayer:Player).nil
 ---@param name string
 ---@param typ string
 ---@param btn number
 ---@param status number
 ---@param key string
 ---@param callFunc noteOnMouseGameData
----@return void
+---@return nil
 function mouse.evt(name, typ, btn, status, key, callFunc)
     if (mouse._evt[name] == nil) then
         if (callFunc == nil) then
@@ -61,7 +61,7 @@ end
 --- 当鼠标左键点击
 ---@param key string
 ---@param callFunc noteOnMouseGameData
----@return void
+---@return nil
 function mouse.onLeftClick(key, callFunc)
     mouse.evt("onLeftClick", 1, GAME_KEY_MOUSE_LEFT, 1, key, callFunc)
 end
@@ -69,7 +69,7 @@ end
 --- 当鼠标左键释放
 ---@param key string
 ---@param callFunc noteOnMouseGameData
----@return void
+---@return nil
 function mouse.onLeftRelease(key, callFunc)
     mouse.evt("onLeftRelease", 1, GAME_KEY_MOUSE_LEFT, 0, key, callFunc)
 end
@@ -77,7 +77,7 @@ end
 --- 当鼠标右键点击
 ---@param key string
 ---@param callFunc noteOnMouseGameData
----@return void
+---@return nil
 function mouse.onRightClick(key, callFunc)
     mouse.evt("onRightClick", 1, GAME_KEY_MOUSE_RIGHT, 1, key, callFunc)
 end
@@ -85,7 +85,7 @@ end
 --- 当鼠标右键释放
 ---@param key string
 ---@param callFunc noteOnMouseGameData
----@return void
+---@return nil
 function mouse.onRightRelease(key, callFunc)
     mouse.evt("onRightRelease", 1, GAME_KEY_MOUSE_RIGHT, 0, key, callFunc)
 end
@@ -93,7 +93,7 @@ end
 --- 当鼠标滚轮
 ---@param key string
 ---@param callFunc noteOnMouseGameData|{delta:number}
----@return void
+---@return nil
 function mouse.onWheel(key, callFunc)
     mouse.evt("onWheel", 2, nil, nil, key, callFunc)
 end
@@ -101,7 +101,7 @@ end
 --- 当鼠标移动
 ---@param key string
 ---@param callFunc noteOnMouseGameData|{x:number,y:number}
----@return void
+---@return nil
 function mouse.onMove(key, callFunc)
     mouse.evt("onMove", 3, nil, nil, key, callFunc)
 end

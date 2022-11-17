@@ -1896,7 +1896,7 @@ end
 --- 异步执行刷新
 ---@param key string
 ---@param callFunc function|nil
----@return void
+---@return nil
 function japi.Refresh(key, callFunc)
     return J.ExecJAPI("Refresh_", key, callFunc)
 end

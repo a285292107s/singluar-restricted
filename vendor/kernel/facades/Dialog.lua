@@ -15,7 +15,7 @@
 
 ---@class Dialog:Object
 ---@param title string
----@alias noteDialogAction fun(evtData:{triggerPlayer:Player,triggerDialog:Dialog,label:"标签",value:"值",hotkey:"热键"}):void
+---@alias noteDialogAction fun(evtData:{triggerPlayer:Player,triggerDialog:Dialog,label:"标签",value:"值",hotkey:"热键"}):nil
 ---@param options table
 ---@param action noteDialogAction | "function(evtData) end"
 ---@return Dialog

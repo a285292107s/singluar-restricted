@@ -16,7 +16,7 @@ end
 
 --- 添加对象
 ---@param whichObj Object|Unit|Item
----@return void
+---@return nil
 function group.push(whichObj)
     if (whichObj.__NAME__ ~= nil) then
         local d = group.data(whichObj.__NAME__)
@@ -28,7 +28,7 @@ end
 
 --- 删除对象
 ---@param whichObj Object|Unit|Item
----@return void
+---@return nil
 function group.remove(whichObj)
     if (whichObj.__NAME__ ~= nil) then
         group.data(whichObj.__NAME__).set(whichObj.__ID__, nil)
@@ -90,8 +90,8 @@ end
 
 --- 遍历单位组
 ---@param filter unitGroupFilter
----@param action fun(enumObj: Unit):void
----@return void
+---@param action fun(enumObj: Unit):nil
+---@return nil
 function group.forEach(filter, action)
     local catch = group.catch(filter)
     if (#catch > 0) then

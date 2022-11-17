@@ -14,7 +14,7 @@ print = function(...) JassConsole['write'](...) end
 --- 强制检查结果真确性，类似断言
 ---@param check boolean
 ---@param failTips any
----@return void
+---@return nil
 function must(check, failTips)
     if (type(check) ~= 'boolean') then
         error('boolean')

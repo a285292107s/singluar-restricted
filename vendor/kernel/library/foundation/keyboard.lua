@@ -7,20 +7,20 @@ keyboard._evt = keyboard._evt or {}
 
 --- 按下键盘
 ---@param ketString string
----@return void
+---@return nil
 function keyboard.press(ketString)
     J.ForceUIKey(ketString)
 end
 
 --- 当键盘触发事件
 ---@protected
----@alias noteOnKeyboardData fun(evtData:{triggerPlayer:Player,triggerKey:number}):void
+---@alias noteOnKeyboardData fun(evtData:{triggerPlayer:Player,triggerKey:number}):nil
 ---@param name string
 ---@param keyboardCode number
 ---@param status number
 ---@param key string
 ---@param callFunc noteOnKeyboardData
----@return void
+---@return nil
 function keyboard.evt(name, keyboardCode, status, key, callFunc)
     if (keyboard._evt[name] == nil) then
         if (callFunc == nil) then
@@ -54,7 +54,7 @@ end
 ---@param keyboardCode number
 ---@param key string
 ---@param callFunc noteOnKeyboardData
----@return void
+---@return nil
 function keyboard.onPress(keyboardCode, key, callFunc)
     keyboard.evt("onPress", keyboardCode, GAME_KEY_ACTION_PRESS, key, callFunc)
 end
@@ -62,7 +62,7 @@ end
 --- 当键盘异步释放
 ---@param key string
 ---@param callFunc noteOnKeyboardData
----@return void
+---@return nil
 function keyboard.onRelease(keyboardCode, key, callFunc)
     keyboard.evt("onRelease", keyboardCode, GAME_KEY_ACTION_RELEASE, key, callFunc)
 end
