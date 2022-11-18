@@ -1,4 +1,4 @@
----@c Array UI套件管理
+---@class Array UI套件管理
 UIKits = UIKits or Array()
 
 ---@return UIKit
