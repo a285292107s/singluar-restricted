@@ -2,7 +2,7 @@
 local _
 
 ---@alias noteOnFrameEvtData {triggerFrame:Frame,triggerPlayer:Player}
----@alias noteOnFrameEvtReleaseData {triggerFrame:Frame,triggerPlayer:Player,status:boolean 鼠标是否还在Frame内}
+---@alias noteOnFrameEvtReleaseData {triggerFrame:Frame,triggerPlayer:Player,status:boolean }最后的status指鼠标是否还在Frame内
 
 --- handle
 ---@return number

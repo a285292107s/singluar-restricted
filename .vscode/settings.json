@@ -17,6 +17,16 @@
     },
     "Lua.diagnostics.globals": [
         "bop",
-        "Object"
-    ]
+        "Object",
+        "Class"
+    ],
+    "Lua.workspace.ignoreDir": [
+        ".vscode",
+        "temp",
+        "vendor/lni",
+        "vendor/models",
+        "vendor/w3x2lni",
+        "vendor/WE",
+        "大白兔笔记"
+      ]
 }
