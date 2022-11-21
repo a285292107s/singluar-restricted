@@ -22,7 +22,7 @@ function ability.split(options)
     end
     local radius = options.radius or 200
     event.trigger(sourceUnit, EVENT.Unit.Split, { triggerUnit = sourceUnit, targetUnit = targetUnit, radius = radius })
-    event.trigger(targetUnit, EVENT.Unit.Be.Split, { triggerUnit = sourceUnit, sourceUnit = sourceUnit, radius = radius })
+    event.trigger(targetUnit, EVENT.Unit.Be.Split, { triggerUnit = targetUnit, sourceUnit = sourceUnit, radius = radius })
     local damage = options.damage or 0
     if (damage > 0) then
         local dmgSrc = options.damageSrc or DAMAGE_SRC.ability
