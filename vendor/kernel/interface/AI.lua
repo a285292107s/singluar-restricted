@@ -24,14 +24,14 @@ function _.period(modify) end
 ---@return self|noteAICall
 function _.action(modify) end
 
---- 关联单位
---- 单位被关联后等于启用了此AI
+--- 关连单位
+--- 单位被关连后等于启用了此AI
 ---@param whichUnit Unit
 ---@return void
 function _.link(whichUnit) end
 
---- 断联单位
---- 单位被关联后等于关闭了此AI
+--- 断连单位
+--- 单位被断连后等于关闭了此AI
 ---@param whichUnit Unit
 ---@return void
 function _.unlink(whichUnit) end
