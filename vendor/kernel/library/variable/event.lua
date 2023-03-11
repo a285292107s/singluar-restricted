@@ -230,6 +230,9 @@ EVENT = {
         --- 技能生效
         ---@alias noteOnAbilityEffectiveData noteOnAbilityBase|{triggerItem:Item,targetUnit:Unit,targetX:number,targetY:number,targetZ:number}
         Effective = "abilityEffective",
+        --- 技能持续施法每周期时（动作时）
+        ---@alias noteOnAbilityCastingData noteOnAbilityBase|{triggerItem:Item,targetUnit:Unit,targetX:number,targetY:number,targetZ:number}
+        Casting = "abilityCasting",
         --- 施放技能结束（只有持续施法有结束状态）
         ---@alias noteOnAbilityStopData noteOnAbilityBase
         Stop = "abilityStop",
@@ -254,6 +257,9 @@ EVENT = {
         --- 丢弃物品
         ---@alias noteOnItemDropData noteOnItemBase
         Drop = "itemDrop",
+        --- 传递物品
+        ---@alias noteOnItemDeliverData noteOnItemBase|{targetUnit:Unit}
+        Deliver = "itemDeliver",
         --- 抵押物品（持有人售出）
         ---@alias noteOnItemPawnData noteOnItemBase
         Pawn = "itemPawn",
@@ -279,4 +285,16 @@ EVENT = {
         ---@alias noteOnDecoDestroyData noteOnDestructableBase
         Destroy = "destructableDestroy",
     },
+    ---@alias noteOnAIBase {triggerAI:AI}
+    AI = {
+        --- AI毁灭
+        ---@alias noteOnAIDestroyData noteOnAIBase
+        Destroy = "aiDestroy",
+        --- 关连单位
+        ---@alias noteOnAILinkData noteOnAIBase|{triggerUnit:Unit}
+        Link = "aiLink",
+        --- 断连单位
+        ---@alias noteOnAIUnlinkData noteOnAIBase|{triggerUnit:Unit}
+        Unlink = "aiUnlink",
+    }
 }

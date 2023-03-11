@@ -97,7 +97,7 @@ function ability.leap(options)
     local dtStep = distance0 / speed / frequency
     local dtSpd = 1 / dtStep
 
-    local height = sPoint[3] + options.height or 0
+    local height = sPoint[3] + (tPoint[3] - sPoint[3]) * 0.5 + (options.height or 0)
 
     local shake = options.shake
     local shakeOffset = options.shakeOffset or distance0 / 2
@@ -111,7 +111,7 @@ function ability.leap(options)
 
     local facing = math.angle(sPoint[1], sPoint[2], tPoint[1], tPoint[2])
     local mx, my = math.polar(sPoint[1], sPoint[2], shakeOffset, facing + shake)
-    local mPoint = { mx, my, 1.5 * height }
+    local mPoint = { mx, my, height }
 
     if (options.animate) then
         sourceUnit.animate(options.animate)
@@ -180,17 +180,6 @@ function ability.leap(options)
             return
         end
         cPoint = nPoint
-        if (type(options.onMove) == "function") then
-            local mRes = options.onMove(options, cPoint)
-            if (mRes == false) then
-                destroy(curTimer)
-                _leapEnding(false, options, cPoint)
-                return
-            end
-        end
-        sourceUnit.facing(math.angle(cPoint[1], cPoint[2], tPoint[1], tPoint[2]))
-        sourceUnit.position(cPoint[1], cPoint[2])
-        sourceUnit.flyHeight(cPoint[3])
         distanceCur = math.distance(cPoint[1], cPoint[2], tPoint[1], tPoint[2])
         if (distanceCur > collision and distancePrev ~= nil) then
             if ((distanceCur - distancePrev) > faraway) then
@@ -199,6 +188,20 @@ function ability.leap(options)
                 return
             end
         end
+        if (distanceCur <= collision) then
+            cPoint = { tPoint[1], tPoint[2], tPoint[3] }
+        end
+        if (type(options.onMove) == "function") then
+            local mRes = options.onMove(options, cPoint)
+            if (mRes == false) then
+                curTimer.destroy()
+                _leapEnding(false, options, cPoint)
+                return
+            end
+        end
+        sourceUnit.facing(math.angle(cPoint[1], cPoint[2], tPoint[1], tPoint[2]))
+        sourceUnit.position(cPoint[1], cPoint[2])
+        sourceUnit.flyHeight(cPoint[3])
         distancePrev = distanceCur
         if (dt >= 1 or distanceCur <= collision) then
             curTimer.destroy()

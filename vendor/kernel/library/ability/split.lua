@@ -22,7 +22,7 @@ function ability.split(options)
     end
     local radius = options.radius or 200
     event.trigger(sourceUnit, EVENT.Unit.Split, { triggerUnit = sourceUnit, targetUnit = targetUnit, radius = radius })
-    event.trigger(targetUnit, EVENT.Unit.Be.Split, { triggerUnit = sourceUnit, sourceUnit = sourceUnit, radius = radius })
+    event.trigger(targetUnit, EVENT.Unit.Be.Split, { triggerUnit = targetUnit, sourceUnit = sourceUnit, radius = radius })
     local damage = options.damage or 0
     if (damage > 0) then
         local dmgSrc = options.damageSrc or DAMAGE_SRC.ability
@@ -33,7 +33,7 @@ function ability.split(options)
             x = targetUnit.x(), y = targetUnit.y(), radius = radius,
             ---@param enumUnit Unit
             filter = function(enumUnit)
-                return enumUnit.isAlive() and enumUnit.isSelf(targetUnit) == false and enumUnit.isAlly(targetUnit.owner())
+                return enumUnit.isAlive() and enumUnit.isSelf(targetUnit) == false and sourceUnit.isEnemy(enumUnit.owner())
             end
         })
         if (#enumUnits > 0) then

@@ -1,7 +1,7 @@
 ---@class UnitTpl
 local _
 
---- 通用型事件注册
+--- 本对象事件注册
 ---@param evt string 事件类型字符
 ---@vararg string|fun(callData:table)
 ---@return self
@@ -59,6 +59,16 @@ function _.modelScale(modify) end
 ---@return self|number
 function _.animateScale(modify) end
 
+--- 发动施法动作
+---@param modify string|nil
+---@return self|string
+function _.castAnimation(modify) end
+
+--- 持续施法动作
+---@param modify string|nil
+---@return self|string
+function _.keepAnimation(modify) end
+
 --- 单位攻击动作击出比率点[%]
 --- 默认0.8，范围[0-1.5]
 ---@param modify? number|nil
@@ -91,7 +101,7 @@ function _.properName(modify) end
 ---@param blue number 蓝0-255
 ---@param alpha number 透明度0-255
 ---@param duration number 持续时间 -1无限
----@return self|Array
+---@return self|number[4]
 function _.rgba(red, green, blue, alpha, duration) end
 
 --- 单位图标

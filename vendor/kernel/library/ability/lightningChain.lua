@@ -23,7 +23,7 @@ local _lc = function(index, lightningType, sourceUnit, prevUnit, targetUnit, dmg
     if (sourceUnit ~= nil) then
         event.trigger(sourceUnit, EVENT.Unit.LightningChain, { triggerUnit = sourceUnit, targetUnit = targetUnit, index = index })
     end
-    event.trigger(targetUnit, EVENT.Unit.Be.LightningChain, { triggerUnit = sourceUnit, sourceUnit = sourceUnit, index = index })
+    event.trigger(targetUnit, EVENT.Unit.Be.LightningChain, { triggerUnit = targetUnit, sourceUnit = sourceUnit, index = index })
 end
 
 --- 闪电链

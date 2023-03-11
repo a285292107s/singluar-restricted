@@ -32,6 +32,9 @@ function keyboard.evt(name, keyboardCode, status, key, callFunc)
         keyboard._evt[name][keyboardCode] = Array()
         JassJapi["DzTriggerRegisterKeyEventByCode"](nil, keyboardCode, status, false, function()
             local triggerKey = japi.DzGetTriggerKey()
+            if (triggerKey ~= KEYBOARD["Esc"] and triggerKey ~= KEYBOARD["Enter"] and japi.IsTyping()) then
+                return
+            end
             if (isArray(keyboard._evt[name][triggerKey]) and keyboard._evt[name][triggerKey].count() > 0) then
                 local triggerPlayer = Player(1 + J.GetPlayerId(japi.DzGetTriggerKeyPlayer()))
                 async.call(triggerPlayer, function()

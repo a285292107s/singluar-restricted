@@ -1,6 +1,11 @@
 * 【document】[https://singluar.hunzsig.org](https://singluar.hunzsig.org)
+* 【assets】[https://github.com/singluar/assets](https://github.com/singluar/assets) 【necessary】
+* 【assetsNew】[https://github.com/singluar/assetsNew](https://github.com/singluar/assetsNew)【necessary】
+* 【domo】[https://github.com/singluar/s-zero](https://github.com/singluar/s-zero)
+* 【sponsor】[https://afdian.net/a/hunzsig](https://afdian.net/a/hunzsig)
 
-SingluarRestricted all tools have passed various function tests.
-It's your own problem that it's invalid and can't be executed.
-SingluarRestricted does not provide any support.
-If you use it, please solve all problems by yourself.
+### 此为Singluar框架公开版本
+
+##### 所有工具已通过功能测试
+
+##### 如无法使用，可自行解决问题

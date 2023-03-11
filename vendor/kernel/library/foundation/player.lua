@@ -118,10 +118,7 @@ player.evtDamagedArrived = function(sourceUnit, targetUnit)
         return
     end
     if (sourceUnit.weaponSoundMode() == 1) then
-        local v = Vwp(sourceUnit, targetUnit)
-        if (v) then
-            v.play()
-        end
+        audio(Vwp(sourceUnit, targetUnit))
     end
     local dmg = sourceUnit.attack() + math.rand(0, sourceUnit.attackRipple())
     if (dmg >= 0.1) then
@@ -215,7 +212,9 @@ player.evtDamaged = function(sourceUnit, targetUnit)
                 ability.missile(options)
                 if (gatlin > 0) then
                     time.setInterval(0.25, function(gatlinTimer)
-                        if (gatlin <= 0 or false == isObject(sourceUnit, "Unit") or sourceUnit.isDead()) then
+                        if (gatlin <= 0
+                            or false == isObject(sourceUnit, "Unit") or sourceUnit.isDead()
+                            or false == isObject(targetUnit, "Unit") or targetUnit.isDead()) then
                             gatlinTimer.destroy()
                             return
                         end
@@ -292,10 +291,7 @@ player.evtAttacked = J.Condition(function()
             ag.set(curTimer.id(), nil)
             curTimer.destroy()
             if (attacker.weaponSoundMode() == 2) then
-                local v = Vwp(attacker, targetUnit)
-                if (v) then
-                    v.play()
-                end
+                audio(Vwp(attacker, targetUnit))
             end
             player.evtDamaged(attacker, targetUnit)
         end)
@@ -415,7 +411,7 @@ player.evtOrder = J.Condition(function()
     local orderId = J.GetIssuedOrderId()
     local orderTargetUnit = J.GetOrderTargetUnit()
     local tx, ty, tz
-    if (orderTargetUnit ~= nil) then
+    if (orderTargetUnit ~= 0) then
         tx = J.GetUnitX(orderTargetUnit)
         ty = J.GetUnitY(orderTargetUnit)
         tz = japi.Z(tx, ty)
@@ -497,9 +493,6 @@ end)
 ---@param deadUnit Unit
 player.evtKill = function(deadUnit)
     local killer = deadUnit.lastHurtSource()
-    if (killer ~= nil) then
-        killer.owner().kill("+=1")
-    end
     deadUnit.prop("isAlive", false)
     --- 触发击杀事件
     if (killer ~= nil) then

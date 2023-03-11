@@ -109,11 +109,36 @@ INITIALIZATION = function()
     ---@type Frame
     FrameGameUI = Frame("UI_GAME", japi.DzGetGameUI(), nil)
 
-    --- 中立玩家
+    --- 玩家初始化
     PlayerAggressive = Player(PLAYER_NEUTRAL_AGGRESSIVE + 1)
     PlayerVictim = Player(PLAYER_NEUTRAL_VICTIM + 1)
     PlayerExtra = Player(PLAYER_NEUTRAL_EXTRA + 1)
     PlayerPassive = Player(PLAYER_NEUTRAL_PASSIVE + 1)
+    for i = 1, BJ_MAX_PLAYER_SLOTS, 1 do Player(i) end
+
+    --- 音乐
+    Bgm()
+
+    --- 镜头
+    Camera()
+
+    --- IsTyping
+    keyboard.onRelease(KEYBOARD["Enter"], "IsTyping", function(evtData)
+        local pi = evtData.triggerPlayer.index()
+        SL_CACHE["IsTyping"][pi] = ((SL_CACHE["IsTyping"][pi] or false) == false)
+    end)
+    keyboard.onRelease(KEYBOARD["Esc"], "IsTyping", function(evtData)
+        local pi = evtData.triggerPlayer.index()
+        if (SL_CACHE["IsTyping"][pi] == true) then
+            SL_CACHE["IsTyping"][pi] = false
+        end
+    end)
+    mouse.onLeftRelease("IsTyping", function(evtData)
+        local pi = evtData.triggerPlayer.index()
+        if (SL_CACHE["IsTyping"][pi] == true) then
+            SL_CACHE["IsTyping"][pi] = false
+        end
+    end)
 
     --- 异步随机池
     for i = 1, BJ_MAX_PLAYER_SLOTS do
@@ -227,6 +252,22 @@ INITIALIZATION = function()
                 effect.xyz(eff, mx, my, 2 + japi.Z(mx, my))
                 it.drop(mx, my)
             end
+        elseif (command == "item_deliver_cursor") then
+            async.call(syncPlayer, function()
+                local followData = Cursor().prop("followData") or {}
+                ---@type FrameCustom
+                local frame = followData.frame
+                if (instanceof(frame, "FrameCustom")) then
+                    japi.DzFrameSetAlpha(frame.handle(), frame.alpha())
+                end
+            end)
+            local itId = syncData.transferData[2]
+            local uId = syncData.transferData[3]
+            ---@type Item
+            local it = i2o(itId)
+            if (isObject(it, "Item")) then
+                it.deliver(i2o(uId))
+            end
         elseif (command == "item_to_warehouse") then
             local itId = syncData.transferData[2]
             ---@type Item
@@ -234,12 +275,7 @@ INITIALIZATION = function()
             if (isObject(it, "Item")) then
                 syncPlayer.selection().itemSlot().remove(it.itemSlotIndex())
                 syncPlayer.warehouseSlot().push(it)
-                local v = Vcm("war3_dropItem")
-                if (isObject(v, "Vcm")) then
-                    async.call(syncPlayer, function()
-                        v.play()
-                    end)
-                end
+                audio(Vcm("war3_dropItem"), syncPlayer)
             end
         elseif (command == "warehouse_to_item") then
             local itId = syncData.transferData[2]
@@ -248,12 +284,7 @@ INITIALIZATION = function()
             if (isObject(it, "Item")) then
                 syncPlayer.warehouseSlot().remove(it.warehouseSlotIndex())
                 syncPlayer.selection().itemSlot().push(it)
-                local v = Vcm("war3_pickItem")
-                if (isObject(v, "Vcm")) then
-                    async.call(syncPlayer, function()
-                        v.play()
-                    end)
-                end
+                audio(Vcm("war3_pickItem"), syncPlayer)
             end
         end
     end)

@@ -85,6 +85,11 @@ function _.sellingPrice() end
 ---@return nil
 function _.drop(x, y) end
 
+--- 传递物品
+---@param targetUnit Unit 目标单位
+---@return void
+function _.deliver(targetUnit) end
+
 --- 抵押物品
 ---@return nil
 function _.pawn() end

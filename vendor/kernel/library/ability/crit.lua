@@ -20,7 +20,7 @@ function ability.crit(options)
         return
     end
     event.trigger(sourceUnit, EVENT.Unit.Crit, { triggerUnit = sourceUnit, targetUnit = targetUnit })
-    event.trigger(targetUnit, EVENT.Unit.Be.Crit, { triggerUnit = sourceUnit, critUnit = sourceUnit })
+    event.trigger(targetUnit, EVENT.Unit.Be.Crit, { triggerUnit = targetUnit, critUnit = sourceUnit })
     local damage = options.damage or 0
     if (damage > 0) then
         local damageSrc = options.damageSrc or DAMAGE_SRC.ability

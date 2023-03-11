@@ -1698,6 +1698,42 @@ function japi.DzAPI_Map_OpenMall(whichPlayer, key)
     return J.ExecJAPI("DzAPI_Map_OpenMall_", whichPlayer, key)
 end
 
+--- 玩家最近一次上安利墙时间
+--- 获取玩家最近一次在当前地图的优质评论被推荐上安利墙的时间
+---@param whichPlayer number
+---@return number int 时间戳
+function japi.DzAPI_Map_GetLastRecommendTime(whichPlayer)
+    return J.ExecJAPI("DzAPI_Map_GetLastRecommendTime_", whichPlayer)
+end
+
+--- 获取玩家在当前地图的宝箱累计抽取次数
+---@param whichPlayer number
+---@return number int
+function japi.DzAPI_Map_GetLotteryUsedCount(whichPlayer)
+    return J.ExecJAPI("DzAPI_Map_GetLotteryUsedCount_", whichPlayer)
+end
+
+--- 上报本局游戏玩家数据
+--- 上报本局游戏的玩家数据，比如战斗力、杀敌数等。
+--- 以下数据项 key 由平台统一定义，请勿随意自行上传：
+--- RankIndex: 乱斗模式排名
+--- InnerGameMode: 地图模式名称
+--- GameResult: 游戏结果（上报后立即结束游戏），1=胜利，0=失败
+--- GameResultNoEnd: 游戏结果（上报后不会立即结束游戏），1=胜利，0=失败
+---@param whichPlayer number
+---@param key string
+---@param value string
+---@return number int
+function japi.DzAPI_Map_GameResult_CommitData(whichPlayer, key, value)
+    return J.ExecJAPI("DzAPI_Map_GameResult_CommitData_", whichPlayer, key, value)
+end
+
+--- 本局游戏是否处于平台自测服
+---@return boolean
+function japi.DzAPI_Map_IsMapTest()
+    return J.ExecJAPI("DzAPI_Map_IsMapTest_")
+end
+
 --------------------------------------------------------------------------
 
 --- 读取游戏运行FPS
@@ -1796,6 +1832,12 @@ function japi.IsEventAttackType(attackType)
     return J.ExecJAPI("IsEventAttackType_", attackType)
 end
 
+--- 玩家是否正在聊天框输入
+---@return boolean
+function japi.IsTyping()
+    return J.ExecJAPI("IsTyping_")
+end
+
 --- 新建一个Tag索引
 ---@return string
 function japi.FrameTagIndex()
@@ -1803,7 +1845,7 @@ function japi.FrameTagIndex()
 end
 
 --- 获取某个坐标的Z轴高度
---- * 不可异步使用
+--- 可异步使用
 ---@param x number
 ---@param y number
 ---@return number
