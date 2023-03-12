@@ -28,5 +28,20 @@
         "vendor/w3x2lni",
         "vendor/WE",
         "笔记"
-      ]
+    ],
+
+    
+    "files.autoSave": "afterDelay", // 自动保存
+    "editor.renderWhitespace": "all", // 显示空格和制表符
+    "editor.bracketPairColorization.enabled": true, // 启用括号对着色
+    "editor.smoothScrolling": true, // 滚动时使用平滑动画
+    "editor.cursorSmoothCaretAnimation": "on", // 光标在移动时使用平滑动画
+    "files.insertFinalNewline": true, // 自动在文件末尾插入一个空行
+    "files.trimFinalNewlines": true, // 自动删除文件末尾多余的空行（保持只有一个空行）
+    "editor.stickyScroll.enabled": true, // 在顶部显示嵌套的当前作用域
+    "editor.suggest.preview": true,
+    "Lua.completion.callSnippet": "Both",
+    "Lua.hint.enable": true,
+    "Lua.type.weakUnionCheck": true,
+    "Lua.type.weakNilCheck": true, // 预览当前建议的结果
 }
