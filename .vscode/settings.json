@@ -1,12 +1,16 @@
 {
     "Lua.workspace.library": [
-        "${3rd}/Jass/library"//当你调用j函数时，会有注释说明
+        "${3rd}/Jass/library" //当你调用j函数时，会有注释说明
     ],
     "Lua.diagnostics.disable": [
         "missing-parameter",
         "lowercase-global",
         "missing-return",
         "missing-return-value"
+        // missing-parameter：函数调用时缺少参数。
+        // lowercase-global：全局变量名称使用了小写字母。
+        // missing-return：函数缺少返回语句。
+        // missing-return-value：函数缺少返回值。
     ],
     "search.exclude": {
         "**/vendor/lni/": true,
@@ -29,8 +33,6 @@
         "vendor/WE",
         "笔记"
     ],
-
-    
     "files.autoSave": "afterDelay", // 自动保存
     "editor.renderWhitespace": "all", // 显示空格和制表符
     "editor.bracketPairColorization.enabled": true, // 启用括号对着色
@@ -43,6 +45,5 @@
     "Lua.completion.callSnippet": "Both",
     "Lua.hint.enable": true,
     "Lua.type.weakUnionCheck": true,
-    "Lua.type.weakNilCheck": true, 
-    
+    "Lua.type.weakNilCheck": true,
 }
