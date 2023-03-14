@@ -80,8 +80,30 @@ end
 
 如果使用`bin/`，那么在由于文件夹a的父节点bin被排除，所以文件路径断裂，无法搜索到a，哪怕它不在排除列表中。
 
-所以正确的写法是：
+`!bin/a`是将已经排除的a文件夹重新包含，但是并不会将其父级bin重新包含，而无法进入bin文件夹，里面的文件是否被排除都失去了意义，它们将无法被包含。
+
+所以实现仅保留bin文件目录下方的a文件夹的正确的写法是：
 ```
 bin/*
 !bin/a
+```
+## lua插件3.6.17 存在的问题
+self尚未支持泛型
+当class B继承了class A，并调用A里的方法，插件就错误认为它是A了。
+```lua
+---@class A
+local A
+---@return self
+function A.atk()
+    
+end
+
+---@class B:A
+local B
+---@return self
+function B.def()
+    
+end
+
+local c=B.def().atk()//此时插件认为c的类型为A
 ```
