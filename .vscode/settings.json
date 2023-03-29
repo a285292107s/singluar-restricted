@@ -46,6 +46,7 @@
     "Lua.type.weakUnionCheck": true,
     "Lua.type.weakNilCheck": true,
     "Lua.diagnostics.libraryFiles": "Enable",
+    "Lua.runtime.version": "Lua 5.3",
     // "Lua.doc.privateName": [
     //     "_"
     // ],
