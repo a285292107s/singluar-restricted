@@ -1,10 +1,6 @@
-* 【assets】[https://github.com/singluar/assets](https://github.com/singluar/assets) 【necessary】
-* 【assetsNew】[https://github.com/singluar/assetsNew](https://github.com/singluar/assetsNew)【necessary】
-* 【domo】[https://github.com/singluar/s-zero](https://github.com/singluar/s-zero)
-* 【sponsor】[https://afdian.net/a/hunzsig](https://afdian.net/a/hunzsig)
-
-### 此为Singluar框架公开版本
-
-##### 所有工具已通过功能测试
-
-##### 如无法使用，可自行解决问题
+#### 此项目已停止更新并完全开源存档，需求者可自行二次开发
+#### 工具exe源码在sl，需求者可自行编译
+#### 技术文档 [https://afdian.net/a/hunzsig](https://afdian.net/a/hunzsig)
+#### assets资源库 [https://github.com/singluar/assets](https://github.com/singluar/assets) 【放进根目录】
+#### assetsNew资源库 [https://github.com/singluar/assetsNew](https://github.com/singluar/assetsNew)【放进根目录】
+#### 其他例子 [https://github.com/singluar/s-zero](https://github.com/singluar/s-zero)
